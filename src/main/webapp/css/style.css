@@ -1,0 +1,186 @@
+/* =============================================
+   STYLES.CSS - Proyecto Teleticket
+   Curso: Construcción de Software
+   ============================================= */
+
+/* Variables de colores inspirados en Teleticket */
+:root {
+    --color-primario: #e30613;
+    --color-secundario: #1a1a1a;
+    --color-fondo: #f5f5f5;
+    --color-blanco: #ffffff;
+    --color-texto: #333333;
+    --color-borde: #dddddd;
+    --color-exito: #28a745;
+    --color-alerta: #ffc107;
+    --color-bannermain: #E8A88B;  ;
+    --color-banner: #351B36
+}
+
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* ---- NAVBAR ---- */
+.navbar {
+    background-color: var(--color-blanco);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    color: var(--color-primario);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: var(--color-primario);
+}
+
+/* ---- BOTONES ---- */
+.btn-primario {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+    background-color: #b8050f;
+}
+
+.btn-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-secundario:hover {
+    background-color: #333;
+}
+
+/* ---- FORMULARIOS ---- */
+.form-grupo {
+    margin-bottom: 15px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-grupo input,
+.form-grupo select,
+.form-grupo textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-grupo input:focus,
+.form-grupo select:focus,
+.form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+}
+
+/* ---- CONTENEDOR PRINCIPAL ---- */
+.contenedor {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ---- TARJETAS ---- */
+.tarjeta {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* ---- FOOTER ---- */
+footer {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--color-primario);
+}
+
+.banner {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    padding: 30px 20px;
+    background-color: var(--color-bannermain);
+}
+
+/* CONTENIDO ENCIMA */
+.banner h1,
+.banner p,
+.banner a {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* CAPA OSCURA */
+.banner::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+}

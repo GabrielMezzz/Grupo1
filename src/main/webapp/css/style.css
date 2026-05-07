@@ -690,3 +690,134 @@ table tbody tr:hover {
     background-color: #f4f4f4;
     /* Un fondo neutro para que resalten las tarjetas */
 }
+
+/* --- INFO CONTACTO (infocontacto.jsp) --- */
+.contacto-info-wrapper {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.info-titulo {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+}
+
+.info-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-lista li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #555;
+    font-size: 15px;
+}
+
+.info-lista i {
+    color: var(--color-primario);
+    width: 20px;
+    /* Asegura que los iconos estén alineados verticalmente */
+    text-align: center;
+}
+
+.redes-sociales li {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.redes-sociales li:hover {
+    color: var(--color-primario);
+}
+
+/* --- LISTA DE EVENTOS (listaeventos.jsp) --- */
+.eventos-seccion {
+    padding: 20px 0;
+}
+
+.seccion-titulo {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+.eventos-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.evento-card {
+    width: 370px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.evento-contenido {
+    padding: 20px;
+}
+
+.evento-nombre {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #222;
+}
+
+.evento-detalles p {
+    color: #666;
+    font-size: 13px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.evento-detalles i {
+    color: var(--color-primario);
+    width: 14px;
+}
+
+.evento-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f4f4f4;
+}
+
+.evento-precio {
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.btn-comprar-link {
+    text-decoration: none;
+}

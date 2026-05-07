@@ -1,32 +1,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="contenedor">
-  <h3 style="margin-bottom: 20px;">Próximos Eventos</h3>
-  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <section class="eventos-seccion">
+      <h3 class="seccion-titulo">Próximos Eventos</h3>
 
-    <c:forEach var="evento" items="${eventos}">
-      <div style="display: flex; justify-content: center;">
-        <div class="tarjeta" style="width: 370px; background: var(--color-fondo); border-radius: 10px;
-             overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+      <div class="eventos-grid">
+        <c:forEach var="evento" items="${eventos}">
+          <article class="evento-card">
+            <div class="evento-contenido">
+              <h4 class="evento-nombre">${evento.nombre}</h4>
 
-          <div style="padding: 15px;">
-            <h3 style="margin: 0;">${evento.nombre}</h3>
-            <p style="color: #777; font-size: 13px; margin-top: 8px;">FECHA: ${evento.fecha}</p>
-            <p style="color: #777; font-size: 13px;">LUGAR: ${evento.sede}</p>
-            <p style="color: #777; font-size: 13px;">ARTISTA: ${evento.artista}</p>
+              <div class="evento-detalles">
+                <p><i class="fa-solid fa-calendar-days"></i> FECHA: ${evento.fecha}</p>
+                <p><i class="fa-solid fa-location-dot"></i> LUGAR: ${evento.sede}</p>
+                <p><i class="fa-solid fa-microphone"></i> ARTISTA: ${evento.artista}</p>
+              </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-              <span style="color: var(--color-primario); font-weight: bold; font-size: 18px;">S/. ${evento.precio}</span>
-              <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}">
-                <button class="btn-primario">Comprar</button>
-              </a>
+              <div class="evento-footer">
+                <span class="evento-precio">S/. ${evento.precio}</span>
+                <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}" class="btn-comprar-link">
+                  <button class="btn-primario">Comprar</button>
+                </a>
+              </div>
             </div>
-          </div>
-
-        </div>
+          </article>
+        </c:forEach>
       </div>
-    </c:forEach>
-
-  </div>
-</div>
+    </section>

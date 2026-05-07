@@ -1,26 +1,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Eventos - Teleticket</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<body>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <!DOCTYPE html>
+    <html lang="es">
 
-  <%@ include file="navbar.jsp" %>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Eventos - Teleticket</title>
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    </head>
 
-  <c:if test="${compraExitosa}">
-    <div style="background-color: #d4edda; color: #155724; text-align: center;
-         padding: 15px; font-size: 16px; font-weight: bold;">
-      ✓ ¡Compra exitosa! Tu entrada ha sido registrada.
-    </div>
-  </c:if>
+    <body>
 
-  <%@ include file="bannereve.jsp" %>
-  <%@ include file="filtros.jsp" %>
-  <%@ include file="listaeventos.jsp" %>
-  <%@ include file="footer.jsp" %>
+      <%@ include file="navbar.jsp" %>
 
-</body>
-</html>
+        <c:if test="${compraExitosa}">
+          <div class="alerta alerta-exito">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>¡Compra exitosa! Tu entrada ha sido registrada.</span>
+          </div>
+        </c:if>
+
+        <main>
+          <%@ include file="bannereve.jsp" %>
+
+            <div class="eventos-layout">
+              <%@ include file="filtros.jsp" %>
+                <%@ include file="listaeventos.jsp" %>
+            </div>
+        </main>
+
+        <%@ include file="footer.jsp" %>
+
+    </body>
+
+    </html>

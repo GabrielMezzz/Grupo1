@@ -401,3 +401,292 @@ table tbody tr:hover {
     font-weight: bold;
     color: var(--color-primario);
 }
+
+/* --- PÁGINA DE ERROR (error.jsp) --- */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.error-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.error-icon {
+    font-size: 60px;
+    color: #dc3545;
+    /* Rojo de error */
+    margin-bottom: 20px;
+}
+
+.error-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.error-msg-user {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.error-tecnico {
+    background-color: #fff5f5;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #c0392b;
+    margin-bottom: 25px;
+    word-break: break-all;
+}
+
+.btn-error {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--color-primario);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn-error:hover {
+    opacity: 0.8;
+}
+
+/* --- ALERTAS DEL SISTEMA --- */
+.alerta {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin: 10px auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alerta-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- LAYOUT DE EVENTOS --- */
+.eventos-layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsividad básica para el layout de eventos */
+@media (max-width: 768px) {
+    .eventos-layout {
+        flex-direction: column;
+    }
+}
+
+/* --- FILTROS (filtros.jsp) --- */
+.filtros-contenedor {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.filtros-form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.campo-filtro {
+    flex: 1;
+    min-width: 200px;
+}
+
+.campo-filtro label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+.campo-filtro select,
+.campo-filtro input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.campo-filtro select:focus,
+.campo-filtro input[type="date"]:focus {
+    border-color: var(--color-primario);
+}
+
+.btn-buscar {
+    padding: 11px 25px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-buscar:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* --- FORMULARIO DE CONTACTO (formulariocontacto.jsp) --- */
+.contacto-formulario-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 280px;
+}
+
+.formulario-titulo {
+    margin-bottom: 25px;
+    color: var(--color-primario);
+    font-size: 22px;
+}
+
+.campo-grupo {
+    margin-bottom: 20px;
+}
+
+.campo-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.campo-grupo input,
+.campo-grupo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(255, 62, 62, 0.1);
+    /* Sutil resplandor */
+}
+
+.btn-enviar-contacto {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar-contacto:hover {
+    filter: brightness(1.1);
+}
+
+/* --- LOGIN (formulariologin.jsp) --- */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    /* Centrado en la página */
+}
+
+.login-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+}
+
+.opciones-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.link-secundario {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #e63535;
+    /* Un rojo un poco más oscuro */
+}
+
+.registro-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.main-content-wrapper {
+    min-height: calc(100vh - 150px);
+    /* Asegura que el footer siempre esté abajo */
+    padding: 40px 0;
+    background-color: #f4f4f4;
+    /* Un fondo neutro para que resalten las tarjetas */
+}

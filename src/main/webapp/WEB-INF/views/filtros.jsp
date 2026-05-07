@@ -1,33 +1,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="tarjeta" style="margin-bottom: 30px;">
-  <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <div class="form-grupo" style="flex: 1; min-width: 180px; margin-bottom: 0;">
-      <label>Categoría</label>
-      <select>
-        <option>Todas las categorías</option>
-        <c:forEach var="cat" items="${categorias}">
-          <option>${cat.nombre}</option>
-        </c:forEach>
-      </select>
-    </div>
+    <aside class="filtros-contenedor">
+      <form class="filtros-form">
 
-    <div class="form-grupo" style="flex: 1; min-width: 180px; margin-bottom: 0;">
-      <label>Sede</label>
-      <select>
-        <option>Todas las sedes</option>
-        <c:forEach var="s" items="${sedes}">
-          <option>${s.nombre}</option>
-        </c:forEach>
-      </select>
-    </div>
+        <div class="campo-filtro">
+          <label for="cat">Categoría</label>
+          <select id="cat" name="categoria">
+            <option>Todas las categorías</option>
+            <c:forEach var="cat" items="${categorias}">
+              <option value="${cat.id}">${cat.nombre}</option>
+            </c:forEach>
+          </select>
+        </div>
 
-    <div class="form-grupo" style="flex: 1; min-width: 180px; margin-bottom: 0;">
-      <label>Fecha</label>
-      <input type="date">
-    </div>
+        <div class="campo-filtro">
+          <label for="sede">Sede</label>
+          <select id="sede" name="sede">
+            <option>Todas las sedes</option>
+            <c:forEach var="s" items="${sedes}">
+              <option value="${s.id}">${s.nombre}</option>
+            </c:forEach>
+          </select>
+        </div>
 
-    <button class="btn-primario">Buscar</button>
-  </div>
-</div>
+        <div class="campo-filtro">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha">
+        </div>
+
+        <button type="submit" class="btn-buscar">
+          <i class="fa-solid fa-magnifying-glass"></i> Buscar
+        </button>
+
+      </form>
+    </aside>

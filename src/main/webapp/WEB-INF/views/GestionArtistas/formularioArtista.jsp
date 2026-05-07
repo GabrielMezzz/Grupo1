@@ -1,46 +1,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="formulario" style="display: none;">
   <div class="tarjeta" style="margin-bottom: 25px;">
-    <h3 style="margin-bottom: 20px; color: var(--color-primario);">Registrar Nuevo Usuario</h3>
-    <form action="${pageContext.request.contextPath}/gestionusuarios/guardar" method="post">
+    <h3 style="margin-bottom: 20px; color: var(--color-primario);">Registrar Nuevo Artista</h3>
+    <form action="${pageContext.request.contextPath}/gestionartistas/guardar" method="post">
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Nombre</label>
-          <input type="text" name="nombre" placeholder="Ej: Juan">
+          <label>Nombre Artístico / Banda</label>
+          <input type="text" name="nombreArtistico" placeholder="Ej: Banda Rockera">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Apellido</label>
-          <input type="text" name="apellido" placeholder="Ej: Pérez">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>DNI</label>
-          <input type="text" name="dni" placeholder="Ej: 12345678">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Correo electrónico</label>
-          <input type="email" name="correo" placeholder="Ej: juan@gmail.com">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Teléfono</label>
-          <input type="text" name="telefono" placeholder="Ej: 987654321">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Rol</label>
-          <select name="rol">
-            <option>Cliente</option>
-            <option>Administrador</option>
+          <label>Género / Tipo</label>
+          <select name="genero">
+            <option>Rock</option>
+            <option>Pop</option>
+            <option>Teatro</option>
+            <option>Comedia</option>
+            <option>Clásica</option>
+            <option>Urbano</option>
           </select>
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Contraseña</label>
-          <input type="password" name="contrasena" placeholder="Ingresa contraseña">
+          <label>Nacionalidad</label>
+          <input type="text" name="nacionalidad" placeholder="Ej: Peruana">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Correo de Contacto</label>
+          <input type="email" name="correo" placeholder="Ej: artista@gmail.com">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Teléfono / Manager</label>
+          <input type="text" name="telefono" placeholder="Ej: 987654321">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">

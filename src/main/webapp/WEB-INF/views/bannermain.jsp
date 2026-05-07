@@ -8,7 +8,7 @@
     Conciertos, obras de teatro, unipersonales y mucho más
   </p>
 
-  <a href="${pageContext.request.contextPath}/publicidad">
+  <a href="${pageContext.request.contextPath}/eventos">
     <button class="btn-primario" style="font-size: 16px; padding: 15px 29px;">
       Ver Eventos
     </button>

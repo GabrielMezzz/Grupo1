@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Gestión de Usuarios - Teleticket</title>
+  <title>Gestión de Sedes - Teleticket</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
@@ -12,12 +12,12 @@
 
   <div class="contenedor">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-      <h2>Gestión de Usuarios</h2>
-      <button class="btn-primario" onclick="mostrarFormulario()">+ Nuevo Usuario</button>
+      <h2>Gestión de Sedes</h2>
+      <button class="btn-primario" onclick="mostrarFormulario()">+ Nueva Sede</button>
     </div>
 
-    <%@ include file="formularionuevousuario.jsp" %>
-    <%@ include file="tablausuarios.jsp" %>
+    <%@ include file="formularioSede.jsp" %>
+    <%@ include file="tarjetasSedes.jsp" %>
   </div>
 
   <%@ include file="../footer.jsp" %>

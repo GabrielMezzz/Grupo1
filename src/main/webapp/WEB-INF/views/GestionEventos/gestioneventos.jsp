@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <title>Gestión de Eventos - Teleticket</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
-  <%@ include file="navbar.jsp" %>
+  <%@ include file="../navbarcrud.jsp" %>
 
   <div class="contenedor">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
@@ -19,7 +20,7 @@
     <%@ include file="tablaeventos.jsp" %>
   </div>
 
-  <%@ include file="footer.jsp" %>
+  <%@ include file="../footer.jsp" %>
 
   <script>
     function mostrarFormulario() {

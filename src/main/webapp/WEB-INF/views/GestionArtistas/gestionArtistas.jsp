@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Gestión de Usuarios - Teleticket</title>
+  <title>Gestión de Artistas - Teleticket</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -12,12 +13,12 @@
 
   <div class="contenedor">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-      <h2>Gestión de Usuarios</h2>
-      <button class="btn-primario" onclick="mostrarFormulario()">+ Nuevo Usuario</button>
+      <h2>Gestión de Artistas</h2>
+      <button class="btn-primario" onclick="mostrarFormulario()">+ Nuevo Artista</button>
     </div>
 
-    <%@ include file="formularionuevousuario.jsp" %>
-    <%@ include file="tablausuarios.jsp" %>
+    <%@ include file="formularioArtista.jsp" %>
+    <%@ include file="tarjetasArtistas.jsp" %>
   </div>
 
   <%@ include file="../footer.jsp" %>

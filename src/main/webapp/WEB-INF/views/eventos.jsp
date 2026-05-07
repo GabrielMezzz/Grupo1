@@ -3,13 +3,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Publicidad - Teleticket</title>
+    <title>Eventos - Teleticket</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
   <%@ include file="navbar.jsp" %>
-  <%@ include file="bannerpub.jsp" %>
+
+  <c:if test="${compraExitosa}">
+    <div style="background-color: #d4edda; color: #155724; text-align: center;
+         padding: 15px; font-size: 16px; font-weight: bold;">
+      ✓ ¡Compra exitosa! Tu entrada ha sido registrada.
+    </div>
+  </c:if>
+
+  <%@ include file="bannereve.jsp" %>
   <%@ include file="filtros.jsp" %>
   <%@ include file="listaeventos.jsp" %>
   <%@ include file="footer.jsp" %>

@@ -6,12 +6,12 @@
     <form action="${pageContext.request.contextPath}/login" method="POST">
       <div class="campo-grupo">
         <label for="email">Correo Electrónico</label>
-        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+        <input type="email" id="email" name="correo" placeholder="ejemplo@correo.com" required>
       </div>
 
       <div class="campo-grupo">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="••••••••" required>
+        <input type="password" id="password" name="contrasena" placeholder="••••••••" required>
       </div>
 
       <div class="opciones-login">

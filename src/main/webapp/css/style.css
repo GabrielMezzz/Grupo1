@@ -821,3 +821,51 @@ table tbody tr:hover {
 .btn-comprar-link {
     text-decoration: none;
 }
+
+/* --- MÉTRICAS --- */
+.contenedor-metricas {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.tarjeta-kpi {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-icono {
+    font-size: 30px;
+    color: var(--color-primario);
+    background: rgba(255, 62, 62, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.kpi-valor {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.kpi-etiqueta {
+    color: #777;
+    font-size: 14px;
+}

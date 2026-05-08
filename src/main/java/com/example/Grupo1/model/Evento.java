@@ -19,6 +19,7 @@ public class Evento {
     private String artista;
     private String estado;
 
+    // Información general del evento
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

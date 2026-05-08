@@ -18,6 +18,7 @@ public class Entrada {
     private LocalDate fechaCompra;
     private String estado;
 
+    // Datos de la entrada comprada
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

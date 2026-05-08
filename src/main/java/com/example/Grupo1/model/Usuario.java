@@ -19,7 +19,7 @@ public class Usuario {
     private String contrasena;
     private String estado;
 
-    // Getters y Setters
+    // Información del usuario registrado
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

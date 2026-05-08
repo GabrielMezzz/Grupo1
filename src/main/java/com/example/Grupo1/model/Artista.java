@@ -17,6 +17,7 @@ public class Artista {
     private String telefono;
     private String estado;
 
+    // Datos principales del artista
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

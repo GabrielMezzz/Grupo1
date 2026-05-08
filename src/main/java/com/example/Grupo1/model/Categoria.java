@@ -14,6 +14,7 @@ public class Categoria {
     private String descripcion;
     private String estado;
 
+    // Información básica de categoría
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -18,6 +18,7 @@ public class Sede {
     private String tipo;
     private String estado;
 
+    // Información de la sede
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

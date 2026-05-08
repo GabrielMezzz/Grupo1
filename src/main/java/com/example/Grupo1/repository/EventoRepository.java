@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long> {
+
+    // Consulta eventos por estado
     List<Evento> findByEstado(String estado);
 }

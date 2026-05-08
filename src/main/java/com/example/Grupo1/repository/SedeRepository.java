@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface SedeRepository extends JpaRepository<Sede, Long> {
+
+    // Consulta sedes activas o inactivas
     List<Sede> findByEstado(String estado);
 }

@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ArtistaRepository extends JpaRepository<Artista, Long> {
+
+    // Consulta por estado del artista
     List<Artista> findByEstado(String estado);
 }

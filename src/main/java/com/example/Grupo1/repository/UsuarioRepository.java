@@ -8,6 +8,10 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+
+    // Búsqueda para inicio de sesión
     Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+
+    // Consulta usuarios por estado
     List<Usuario> findByEstado(String estado);
 }

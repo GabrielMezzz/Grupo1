@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
+
+    // Consulta categorías según estado
     List<Categoria> findByEstado(String estado);
 }

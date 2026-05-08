@@ -19,6 +19,9 @@ public class LoginController {
 
     @GetMapping("/login")
     public String mostrarLogin() {
+
+        System.out.println("Mostrando pantalla de login");
+
         return "login";
     }
 
@@ -37,21 +40,29 @@ public class LoginController {
 
         // Buscar cliente activo en la base de datos
         Optional<Usuario> usuarioOpt = usuarioRepository.findByCorreoAndContrasena(correo, contrasena);
+
         if (usuarioOpt.isPresent() && usuarioOpt.get().getEstado().equals("Activo")) {
             Usuario u = usuarioOpt.get();
+
             session.setAttribute("usuario", u.getCorreo());
             session.setAttribute("rol", u.getRol());
             session.setAttribute("usuarioObj", u);
+
             return "redirect:/eventos";
         }
 
         model.addAttribute("error", "Credenciales incorrectas o usuario inactivo");
+
         return "login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
+
+        System.out.println("Cerrando sesión");
+
         session.invalidate();
+
         return "redirect:/main";
     }
 }

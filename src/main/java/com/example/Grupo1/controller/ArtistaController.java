@@ -17,11 +17,17 @@ public class ArtistaController {
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
+
+        System.out.println("Ingresando a gestión de artistas");
+
         String rol = (String) session.getAttribute("rol");
+
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
+
         model.addAttribute("artistas", artistaService.listarArtistas());
+
         return "GestionArtistas/gestionArtistas";
     }
 

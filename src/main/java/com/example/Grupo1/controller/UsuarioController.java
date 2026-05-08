@@ -17,12 +17,18 @@ public class UsuarioController {
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
+
+        System.out.println("Ingresando a gestión de usuarios");
+
         String rol = (String) session.getAttribute("rol");
+
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
+
         model.addAttribute("usuarios", usuarioService.listarUsuarios());
         model.addAttribute("usuario", new Usuario());
+
         return "GestionUsuarios/gestionusuarios";
     }
 

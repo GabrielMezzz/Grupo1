@@ -17,11 +17,17 @@ public class CategoriaController {
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
+
+        System.out.println("Acceso al módulo de categorías");
+
         String rol = (String) session.getAttribute("rol");
+
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
+
         model.addAttribute("categorias", categoriaService.listarCategorias());
+
         return "GestionCategorias/gestioncategorias";
     }
 

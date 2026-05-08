@@ -29,15 +29,20 @@ public class EventoController {
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
+
+        System.out.println("Accediendo a gestión de eventos");
+
         String rol = (String) session.getAttribute("rol");
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
+
         model.addAttribute("eventos", eventoService.listarEventos());
         model.addAttribute("evento", new Evento());
         model.addAttribute("sedes", sedeService.listarSedesActivas());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
         model.addAttribute("artistas", artistaService.listarArtistasActivos());
+
         return "GestionEventos/gestioneventos";
     }
 

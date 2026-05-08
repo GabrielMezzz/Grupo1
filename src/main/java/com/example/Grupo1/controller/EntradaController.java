@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/entradas")
-public class    EntradaController {
+public class EntradaController {
 
     @Autowired
     private EntradaService entradaService;
@@ -24,6 +24,9 @@ public class    EntradaController {
 
     @GetMapping("/comprar/{eventoId}")
     public String comprar(@PathVariable Long eventoId, HttpSession session) {
+
+        System.out.println("Procesando compra de entrada");
+
         if (session.getAttribute("usuario") == null) {
             return "redirect:/login";
         }
@@ -48,6 +51,7 @@ public class    EntradaController {
         if (session.getAttribute("usuario") == null) {
             return "redirect:/login";
         }
+
         model.addAttribute("entradas", entradaService.listarEntradas());
         return "misentradas";
     }
@@ -60,6 +64,9 @@ public class    EntradaController {
 
     @GetMapping("/metricas")
     public String mostrarMetricas(Model model) {
+
+        System.out.println("Visualizando métricas de entradas");
+
         // 1. Jalamos la lista de entradas del service
         var listaEntradas = entradaService.listarEntradas();
 
@@ -69,10 +76,10 @@ public class    EntradaController {
                 .mapToDouble(e -> e.getPrecio())
                 .sum();
 
-        // 3. ENVIAMOS LOS DATOS AL JSP (Fíjate que los nombres coincidan con tu JSP)
+        // 3. ENVIAMOS LOS DATOS AL JSP
         model.addAttribute("totalEntradasVendidas", totalVendidas);
         model.addAttribute("totalIngresos", ingresosTotales);
-        model.addAttribute("clientesActivos", 1); // Valor estático por ahora
+        model.addAttribute("clientesActivos", 1);
 
         return "metricas";
     }

@@ -1,23 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <title>Contacto - Teleticket</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<body>
+  <!DOCTYPE html>
+  <html lang="es">
 
-  <%@ include file="navbar.jsp" %>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Teleticket</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+  </head>
 
-  <div class="contenedor">
-    <h2 style="text-align: center; margin-bottom: 30px;">Contáctanos</h2>
-    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
-      <%@ include file="formulariocontacto.jsp" %>
-      <%@ include file="infocontacto.jsp" %>
-    </div>
-  </div>
+  <body>
 
-  <%@ include file="footer.jsp" %>
+    <%@ include file="navbar.jsp" %>
 
-</body>
-</html>
+      <main class="contacto-container">
+        <h2 class="contacto-titulo">Contáctanos</h2>
+        <div class="contacto-flex">
+          <%@ include file="formulariocontacto.jsp" %>
+            <%@ include file="infocontacto.jsp" %>
+        </div>
+      </main>
+
+      <%@ include file="footer.jsp" %>
+
+  </body>
+
+  </html>

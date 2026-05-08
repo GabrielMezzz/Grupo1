@@ -11,7 +11,6 @@ public class Artista {
     private Long id;
 
     private String nombreArtistico;
-    private String nombreReal;
     private String genero;
     private String nacionalidad;
     private String correo;
@@ -23,9 +22,6 @@ public class Artista {
 
     public String getNombreArtistico() { return nombreArtistico; }
     public void setNombreArtistico(String nombreArtistico) { this.nombreArtistico = nombreArtistico; }
-
-    public String getNombreReal() { return nombreReal; }
-    public void setNombreReal(String nombreReal) { this.nombreReal = nombreReal; }
 
     public String getGenero() { return genero; }
     public void setGenero(String genero) { this.genero = genero; }

@@ -7,4 +7,5 @@ public interface EntradaService {
     List<Entrada> listarEntradas();
     void guardarEntrada(Entrada entrada);
     void eliminarEntrada(Long id);
+    Double calcularIngresos();
 }

@@ -4,6 +4,7 @@ import com.example.Grupo1.service.CategoriaService;
 import com.example.Grupo1.service.EntradaService;
 import com.example.Grupo1.service.EventoService;
 import com.example.Grupo1.service.SedeService;
+import com.example.Grupo1.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class HomeController {
     @Autowired
     private SedeService sedeService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping("/main")
     public String main(Model model) {
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
@@ -43,7 +47,19 @@ public class HomeController {
     }
 
     @GetMapping("/metricas")
-    public String metricas() {
+    public String metricas(Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+
+        long clientes = usuarioService.listarUsuarios().stream()
+                .filter(u -> u.getRol() != null && u.getRol().equals("Cliente"))
+                .count();
+        model.addAttribute("clientesActivos", clientes);
+        model.addAttribute("totalEntradasVendidas", entradaService.listarEntradas().size());
+        model.addAttribute("totalEventos", eventoService.listarEventosActivos().size());
+        model.addAttribute("totalIngresos", entradaService.calcularIngresos());
         return "metricas";
     }
 

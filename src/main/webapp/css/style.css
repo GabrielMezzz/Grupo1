@@ -13,7 +13,8 @@
     --color-borde: #dddddd;
     --color-exito: #28a745;
     --color-alerta: #ffc107;
-    --color-bannermain: #E8A88B;  ;
+    --color-bannermain: #E8A88B;
+    ;
     --color-banner: #351B36
 }
 
@@ -137,7 +138,7 @@ body {
     background-color: var(--color-blanco);
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -179,7 +180,7 @@ footer span {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     top: 0;
     left: 0;
 }
@@ -207,4 +208,664 @@ table td {
 
 table tbody tr:hover {
     background-color: #f9f9f9;
+}
+
+/* --- SECCIÓN BANNER (bannereve.jsp) --- */
+.banner-container {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.banner-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.banner-subtitle {
+    font-size: 16px;
+}
+
+/* --- VARIABLES GLOBALES (Pon esto al inicio de tu style.css si no existe) --- */
+:root {
+    --color-primario: #ff3e3e;
+    /* Ajusta el color al que use Teleticket */
+}
+
+/* --- BANNER PRINCIPAL (bannermain.jsp) --- */
+.banner-main {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+    /* Un gris muy oscuro para resaltar el texto */
+    color: white;
+}
+
+.banner-main-title {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.banner-main-title .highlight {
+    color: var(--color-primario);
+}
+
+.banner-main-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #aaa;
+}
+
+.banner-btn {
+    font-size: 16px;
+    padding: 15px 29px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.banner-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* --- SECCIÓN CATEGORÍAS (categorias.jsp) --- */
+.categorias-seccion {
+    padding: 50px 20px;
+    max-width: 1400px;
+    /* Evitamos que el texto se estire infinito en monitores gigantes */
+    margin: 0 auto;
+}
+
+.categorias-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.categorias-grid {
+    display: flex;
+    flex-direction: column;
+    /* Una debajo de otra como tenías con el width 1400 */
+    gap: 20px;
+}
+
+.categoria-tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Un toque de sombra para que resalten */
+    border: 1px solid #eee;
+}
+
+.categoria-info {
+    flex: 1;
+    text-align: left;
+}
+
+.categoria-nombre {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+.categoria-descripcion {
+    margin-top: 10px;
+    color: #666;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* --- PÁGINA DE CONTACTO (contacto.jsp) --- */
+.contacto-container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contacto-titulo {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.contacto-flex {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    /* Permite que los elementos bajen en móviles */
+    justify-content: center;
+}
+
+/* Estilo base para los includes dentro de contacto (ajuste automático) */
+.contacto-flex>* {
+    flex: 1;
+    min-width: 300px;
+    /* Evita que se compriman demasiado */
+}
+
+/* --- DASHBOARD (dashboard.jsp) --- */
+.dashboard-container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-titulo {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.dashboard-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dash-link {
+    text-decoration: none;
+}
+
+.dash-card {
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px);
+    /* Se eleva un poco */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dash-icon {
+    font-size: 50px;
+    color: var(--color-primario);
+}
+
+.dash-text {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--color-primario);
+}
+
+/* --- PÁGINA DE ERROR (error.jsp) --- */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.error-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.error-icon {
+    font-size: 60px;
+    color: #dc3545;
+    /* Rojo de error */
+    margin-bottom: 20px;
+}
+
+.error-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.error-msg-user {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.error-tecnico {
+    background-color: #fff5f5;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #c0392b;
+    margin-bottom: 25px;
+    word-break: break-all;
+}
+
+.btn-error {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--color-primario);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn-error:hover {
+    opacity: 0.8;
+}
+
+/* --- ALERTAS DEL SISTEMA --- */
+.alerta {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin: 10px auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alerta-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- LAYOUT DE EVENTOS --- */
+.eventos-layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsividad básica para el layout de eventos */
+@media (max-width: 768px) {
+    .eventos-layout {
+        flex-direction: column;
+    }
+}
+
+/* --- FILTROS (filtros.jsp) --- */
+.filtros-contenedor {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.filtros-form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.campo-filtro {
+    flex: 1;
+    min-width: 200px;
+}
+
+.campo-filtro label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+.campo-filtro select,
+.campo-filtro input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.campo-filtro select:focus,
+.campo-filtro input[type="date"]:focus {
+    border-color: var(--color-primario);
+}
+
+.btn-buscar {
+    padding: 11px 25px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-buscar:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* --- FORMULARIO DE CONTACTO (formulariocontacto.jsp) --- */
+.contacto-formulario-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 280px;
+}
+
+.formulario-titulo {
+    margin-bottom: 25px;
+    color: var(--color-primario);
+    font-size: 22px;
+}
+
+.campo-grupo {
+    margin-bottom: 20px;
+}
+
+.campo-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.campo-grupo input,
+.campo-grupo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(255, 62, 62, 0.1);
+    /* Sutil resplandor */
+}
+
+.btn-enviar-contacto {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar-contacto:hover {
+    filter: brightness(1.1);
+}
+
+/* --- LOGIN (formulariologin.jsp) --- */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    /* Centrado en la página */
+}
+
+.login-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+}
+
+.opciones-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.link-secundario {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #e63535;
+    /* Un rojo un poco más oscuro */
+}
+
+.registro-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.main-content-wrapper {
+    min-height: calc(100vh - 150px);
+    /* Asegura que el footer siempre esté abajo */
+    padding: 40px 0;
+    background-color: #f4f4f4;
+    /* Un fondo neutro para que resalten las tarjetas */
+}
+
+/* --- INFO CONTACTO (infocontacto.jsp) --- */
+.contacto-info-wrapper {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.info-titulo {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+}
+
+.info-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-lista li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #555;
+    font-size: 15px;
+}
+
+.info-lista i {
+    color: var(--color-primario);
+    width: 20px;
+    /* Asegura que los iconos estén alineados verticalmente */
+    text-align: center;
+}
+
+.redes-sociales li {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.redes-sociales li:hover {
+    color: var(--color-primario);
+}
+
+/* --- LISTA DE EVENTOS (listaeventos.jsp) --- */
+.eventos-seccion {
+    padding: 20px 0;
+}
+
+.seccion-titulo {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+.eventos-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.evento-card {
+    width: 370px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.evento-contenido {
+    padding: 20px;
+}
+
+.evento-nombre {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #222;
+}
+
+.evento-detalles p {
+    color: #666;
+    font-size: 13px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.evento-detalles i {
+    color: var(--color-primario);
+    width: 14px;
+}
+
+.evento-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f4f4f4;
+}
+
+.evento-precio {
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.btn-comprar-link {
+    text-decoration: none;
+}
+
+/* --- MÉTRICAS --- */
+.contenedor-metricas {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.tarjeta-kpi {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-icono {
+    font-size: 30px;
+    color: var(--color-primario);
+    background: rgba(255, 62, 62, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.kpi-valor {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.kpi-etiqueta {
+    color: #777;
+    font-size: 14px;
 }

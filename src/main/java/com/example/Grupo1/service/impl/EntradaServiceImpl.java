@@ -27,4 +27,12 @@ public class EntradaServiceImpl implements EntradaService {
     public void eliminarEntrada(Long id) {
         entradaRepository.deleteById(id);
     }
+
+    @Override
+    public Double calcularIngresos() {
+        return entradaRepository.findAll()
+                .stream()
+                .mapToDouble(e -> e.getPrecio() != null ? e.getPrecio() : 0)
+                .sum();
+    }
 }

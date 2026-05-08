@@ -83,6 +83,12 @@ public class HomeController {
         return "dashboard";
     }
 
+    @GetMapping("/publicidad")
+    public String publicidad(Model model) {
+        model.addAttribute("eventos", eventoService.listarEventosActivos());
+        return "publicidad";
+    }
+
     @GetMapping("/contacto")
     public String contacto() {
         return "contacto";

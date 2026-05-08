@@ -869,3 +869,85 @@ table tbody tr:hover {
     color: #777;
     font-size: 14px;
 }
+/* ---- PUBLICIDAD ---- */
+.publi-header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--color-banner);
+    color: white;
+}
+
+.publi-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.publi-card {
+    background: var(--color-blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 4px solid var(--color-primario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.publi-icono {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--color-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.publi-icono i {
+    font-size: 30px;
+    color: var(--color-blanco);
+}
+
+.publi-tag {
+    background-color: #f8d7da;
+    color: var(--color-primario);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.publi-nombre {
+    font-size: 20px;
+    color: var(--color-texto);
+}
+
+.publi-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.publi-sede {
+    font-size: 13px;
+    color: #999;
+    font-style: italic;
+}
+
+.publi-fecha {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}

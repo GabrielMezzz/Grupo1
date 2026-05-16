@@ -41,15 +41,15 @@ public class EventoController {
         return "GestionEventos/gestioneventos";
     }
 
-    @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Evento evento) {
-        eventoService.guardarEvento(evento);
-        return "redirect:/gestioneventos";
-    }
+//    @PostMapping("/guardar") //F1
+//    public String guardar(@ModelAttribute Evento evento) { //F1
+//        eventoService.guardarEvento(evento); //F1
+//        return "redirect:/gestioneventos"; //F1
+//    } //F1
 
-    @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable Long id) {
-        eventoService.eliminarEvento(id);
-        return "redirect:/gestioneventos";
-    }
+//    @GetMapping("/eliminar/{id}") //F1
+//    public String eliminar(@PathVariable Long id) { //F1
+//        eventoService.eliminarEvento(id); //F1
+//        return "redirect:/gestioneventos"; //F1
+//    } //F1
 }

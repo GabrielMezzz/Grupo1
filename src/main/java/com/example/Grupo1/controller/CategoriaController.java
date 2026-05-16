@@ -25,11 +25,16 @@ public class CategoriaController {
         return "GestionCategorias/gestioncategorias";
     }
 
-    @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Categoria categoria) {
-        categoriaService.guardarCategoria(categoria);
-        return "redirect:/gestioncategorias";
-    }
+    /*
+     * RED (obsoleto)
+     * Este alta estaba pensada para formularios JSP y devolvía una redirección.
+     * La dejo comentada como evidencia porque ahora el test pide JSON.
+     */
+//    @PostMapping("/guardar")
+//    public String guardar(@ModelAttribute Categoria categoria) {
+//        categoriaService.guardarCategoria(categoria);
+//        return "redirect:/gestioncategorias";
+//    }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {

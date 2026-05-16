@@ -7,5 +7,6 @@ public interface CategoriaService {
     List<Categoria> listarCategorias();
     List<Categoria> listarCategoriasActivas();
     void guardarCategoria(Categoria categoria);
-    void eliminarCategoria(Long id);
+    Categoria eliminarCategoria(Long id);
+    Categoria actualizarCategoria(Long id, Categoria categoria);
 }

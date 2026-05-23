@@ -17,9 +17,19 @@
               <p><i class="fa-solid fa-microphone"></i> ARTISTA: ${evento.artista}</p>
             </div>
 
+            <div class="cantidad-wrapper">
+              <span class="cantidad-label">Cantidad:</span>
+              <button type="button" class="cantidad-btn" onclick="decrementar('cant_${evento.id}')">−</button>
+              <input type="number" id="cant_${evento.id}" class="cantidad-input" value="1" min="1" max="10">
+              <button type="button" class="cantidad-btn" onclick="incrementar('cant_${evento.id}')">+</button>
+            </div>
+
             <div class="evento-footer">
               <span class="evento-precio">S/. ${evento.precio}</span>
-              <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}" class="btn-comprar-link">
+              <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}?cantidad=1"
+                 id="link_${evento.id}"
+                 class="btn-comprar-link"
+                 onclick="actualizarLink('${evento.id}', '${pageContext.request.contextPath}')">
                 <button class="btn-primario">Comprar</button>
               </a>
             </div>
@@ -29,3 +39,19 @@
     </div>
   </section>
 </div>
+
+<script>
+  function decrementar(id) {
+    var input = document.getElementById(id);
+    if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+  }
+  function incrementar(id) {
+    var input = document.getElementById(id);
+    if (parseInt(input.value) < 10) input.value = parseInt(input.value) + 1;
+  }
+  function actualizarLink(eventoId, contextPath) {
+    var cantidad = document.getElementById('cant_' + eventoId).value;
+    document.getElementById('link_' + eventoId).href =
+      contextPath + '/entradas/comprar/' + eventoId + '?cantidad=' + cantidad;
+  }
+</script>

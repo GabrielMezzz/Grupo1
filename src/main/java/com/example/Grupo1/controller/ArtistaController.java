@@ -36,4 +36,21 @@ public class ArtistaController {
         artistaService.eliminarArtista(id);
         return "redirect:/gestionartistas";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+        model.addAttribute("artistaEditar", artistaService.obtenerPorId(id));
+        model.addAttribute("artistas", artistaService.listarArtistas());
+        return "GestionArtistas/gestionArtistas";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizar(@ModelAttribute Artista artista) {
+        artistaService.guardarArtista(artista);
+        return "redirect:/gestionartistas";
+    }
 }

@@ -32,4 +32,9 @@ public class ArtistaServiceImpl implements ArtistaService {
     public void eliminarArtista(Long id) {
         artistaRepository.deleteById(id);
     }
+
+    @Override
+    public Artista obtenerPorId(Long id) {
+        return artistaRepository.findById(id).orElseThrow();
+    }
 }

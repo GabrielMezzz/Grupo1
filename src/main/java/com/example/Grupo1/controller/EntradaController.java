@@ -23,7 +23,9 @@ public class    EntradaController {
     private EventoService eventoService;
 
     @GetMapping("/comprar/{eventoId}")
-    public String comprar(@PathVariable Long eventoId, HttpSession session) {
+    public String comprar(@PathVariable Long eventoId,
+                          @RequestParam(defaultValue = "1") int cantidad,
+                          HttpSession session) {
         if (session.getAttribute("usuario") == null) {
             return "redirect:/login";
         }
@@ -31,15 +33,17 @@ public class    EntradaController {
         Evento evento = eventoService.buscarPorId(eventoId);
         Usuario u = (Usuario) session.getAttribute("usuarioObj");
 
-        Entrada entrada = new Entrada();
-        entrada.setNombre(u != null ? u.getNombre() : "Invitado");
-        entrada.setDni(u != null ? u.getDni() : "-");
-        entrada.setEvento(evento.getNombre());
-        entrada.setPrecio(evento.getPrecio());
-        entrada.setFechaCompra(LocalDate.now());
-        entrada.setEstado("Vendida");
+        for (int i = 0; i < cantidad; i++) {
+            Entrada entrada = new Entrada();
+            entrada.setNombre(u != null ? u.getNombre() : "Invitado");
+            entrada.setDni(u != null ? u.getDni() : "-");
+            entrada.setEvento(evento.getNombre());
+            entrada.setPrecio(evento.getPrecio());
+            entrada.setFechaCompra(LocalDate.now());
+            entrada.setEstado("Vendida");
+            entradaService.guardarEntrada(entrada);
+        }
 
-        entradaService.guardarEntrada(entrada);
         return "redirect:/eventos?compra=exitosa";
     }
 

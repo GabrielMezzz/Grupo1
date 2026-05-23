@@ -8,4 +8,5 @@ public interface CategoriaService {
     List<Categoria> listarCategoriasActivas();
     void guardarCategoria(Categoria categoria);
     void eliminarCategoria(Long id);
+    Categoria obtenerPorId(Long id);
 }

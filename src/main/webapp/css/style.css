@@ -869,6 +869,7 @@ table tbody tr:hover {
     color: #777;
     font-size: 14px;
 }
+
 /* ---- PUBLICIDAD ---- */
 .publi-header {
     text-align: center;
@@ -950,4 +951,46 @@ table tbody tr:hover {
     border-radius: 20px;
     font-size: 13px;
     font-weight: bold;
+}
+
+/* ---- SELECTOR DE CANTIDAD ---- */
+.cantidad-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.cantidad-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.cantidad-btn {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.cantidad-btn:hover {
+    background-color: #333;
+}
+
+.cantidad-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 14px;
 }

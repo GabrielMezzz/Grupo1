@@ -10,9 +10,14 @@
       <p style="font-size: 13px; color: #777;">Tipo: ${s.tipo}</p>
       <p style="font-size: 13px; color: #777;">Capacidad: ${s.capacidad}</p>
       <p style="font-size: 13px; color: #777;">Teléfono: ${s.telefono}</p>
-      <a href="${pageContext.request.contextPath}/gestionsedes/eliminar/${s.id}">
-        <button class="btn-secundario" style="width: 100%; padding: 8px; font-size: 12px; margin-top: 15px;">Eliminar</button>
-      </a>
+      <div style="display: flex; gap: 8px; margin-top: 15px;">
+        <a href="${pageContext.request.contextPath}/gestionsedes/editar/${s.id}" style="flex: 1;">
+          <button class="btn-primario" style="width: 100%; padding: 8px; font-size: 12px;">Editar</button>
+        </a>
+        <a href="${pageContext.request.contextPath}/gestionsedes/eliminar/${s.id}" style="flex: 1;">
+          <button class="btn-secundario" style="width: 100%; padding: 8px; font-size: 12px;">Eliminar</button>
+        </a>
+      </div>
     </div>
   </c:forEach>
 </div>

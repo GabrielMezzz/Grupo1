@@ -19,9 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void guardarUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
-    }
+    public void guardarUsuario(Usuario usuario) { usuarioRepository.save(usuario);}
 
     @Override
     public void eliminarUsuario(Long id) {

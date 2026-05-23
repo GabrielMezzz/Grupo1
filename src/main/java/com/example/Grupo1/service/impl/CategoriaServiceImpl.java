@@ -32,4 +32,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void eliminarCategoria(Long id) {
         categoriaRepository.deleteById(id);
     }
+
+    @Override
+    public Categoria obtenerPorId(Long id) {
+        return categoriaRepository.findById(id).orElseThrow();
+    }
 }

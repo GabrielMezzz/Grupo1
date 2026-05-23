@@ -32,4 +32,9 @@ public class SedeServiceImpl implements SedeService {
     public void eliminarSede(Long id) {
         sedeRepository.deleteById(id);
     }
+
+    @Override
+    public Sede obtenerPorId(Long id) {  // ── NUEVO
+        return sedeRepository.findById(id).orElseThrow();
+    }
 }

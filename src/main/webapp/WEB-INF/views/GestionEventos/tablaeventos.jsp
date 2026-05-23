@@ -26,7 +26,10 @@
           <td>S/. ${e.precio}</td>
           <td>${e.capacidad}</td>
           <td><span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px;">${e.estado}</span></td>
-          <td>
+          <td style="display: flex; gap: 6px;">
+            <a href="${pageContext.request.contextPath}/gestioneventos/editar/${e.id}">
+              <button class="btn-primario" style="padding: 5px 12px; font-size: 12px;">Editar</button>
+            </a>
             <a href="${pageContext.request.contextPath}/gestioneventos/eliminar/${e.id}">
               <button class="btn-secundario" style="padding: 5px 12px; font-size: 12px;">Eliminar</button>
             </a>

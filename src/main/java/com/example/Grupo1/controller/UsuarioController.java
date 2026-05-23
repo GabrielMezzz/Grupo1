@@ -22,7 +22,6 @@ public class UsuarioController {
             return "redirect:/login";
         }
         model.addAttribute("usuarios", usuarioService.listarUsuarios());
-        model.addAttribute("usuario", new Usuario());
         return "GestionUsuarios/gestionusuarios";
     }
 
@@ -35,6 +34,23 @@ public class UsuarioController {
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
+        return "redirect:/gestionusuarios";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+        model.addAttribute("usuarioEditar", usuarioService.buscarPorId(id));
+        model.addAttribute("usuarios", usuarioService.listarUsuarios());
+        return "GestionUsuarios/gestionusuarios";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizar(@ModelAttribute Usuario usuario) {
+        usuarioService.guardarUsuario(usuario);
         return "redirect:/gestionusuarios";
     }
 }

@@ -36,4 +36,21 @@ public class CategoriaController {
         categoriaService.eliminarCategoria(id);
         return "redirect:/gestioncategorias";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+        model.addAttribute("categoriaEditar", categoriaService.obtenerPorId(id));
+        model.addAttribute("categorias", categoriaService.listarCategorias());
+        return "GestionCategorias/gestioncategorias";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizar(@ModelAttribute Categoria categoria) {
+        categoriaService.guardarCategoria(categoria);
+        return "redirect:/gestioncategorias";
+    }
 }

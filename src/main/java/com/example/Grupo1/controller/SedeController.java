@@ -36,4 +36,21 @@ public class SedeController {
         sedeService.eliminarSede(id);
         return "redirect:/gestionsedes";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+        model.addAttribute("sede", sedeService.obtenerPorId(id));
+        model.addAttribute("sedes", sedeService.listarSedes());
+        return "GestionSedes/gestionSedes";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizar(@ModelAttribute Sede sede) {
+        sedeService.guardarSede(sede);
+        return "redirect:/gestionsedes";
+    }
 }

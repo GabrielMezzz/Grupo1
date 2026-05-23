@@ -52,4 +52,24 @@ public class EventoController {
         eventoService.eliminarEvento(id);
         return "redirect:/gestioneventos";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
+        String rol = (String) session.getAttribute("rol");
+        if (rol == null || !rol.equals("Administrador")) {
+            return "redirect:/login";
+        }
+        model.addAttribute("eventoEditar", eventoService.buscarPorId(id));
+        model.addAttribute("eventos", eventoService.listarEventos());
+        model.addAttribute("sedes", sedeService.listarSedesActivas());
+        model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
+        model.addAttribute("artistas", artistaService.listarArtistasActivos());
+        return "GestionEventos/gestioneventos";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizar(@ModelAttribute Evento evento) {
+        eventoService.guardarEvento(evento);
+        return "redirect:/gestioneventos";
+    }
 }

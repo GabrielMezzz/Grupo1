@@ -12,8 +12,11 @@
       <p style="font-size: 13px; color: #777;">${a.nacionalidad}</p>
       <p style="font-size: 13px; color: #777;">${a.correo}</p>
       <span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px; display: inline-block; margin-top: 8px;">${a.estado}</span>
-      <div style="margin-top: 15px;">
-        <a href="${pageContext.request.contextPath}/gestionartistas/eliminar/${a.id}">
+      <div style="display: flex; gap: 8px; margin-top: 15px;">
+        <a href="${pageContext.request.contextPath}/gestionartistas/editar/${a.id}" style="flex: 1;">
+          <button class="btn-primario" style="width: 100%; padding: 6px; font-size: 12px;">Editar</button>
+        </a>
+        <a href="${pageContext.request.contextPath}/gestionartistas/eliminar/${a.id}" style="flex: 1;">
           <button class="btn-secundario" style="width: 100%; padding: 6px; font-size: 12px;">Eliminar</button>
         </a>
       </div>

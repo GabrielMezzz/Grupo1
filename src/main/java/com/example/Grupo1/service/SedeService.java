@@ -8,4 +8,5 @@ public interface SedeService {
     List<Sede> listarSedesActivas();
     void guardarSede(Sede sede);
     void eliminarSede(Long id);
+    Sede obtenerPorId(Long id);  // ── NUEVO
 }

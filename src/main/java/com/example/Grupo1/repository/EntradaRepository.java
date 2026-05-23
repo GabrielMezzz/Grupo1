@@ -2,8 +2,8 @@ package com.example.Grupo1.repository;
 
 import com.example.Grupo1.model.Entrada;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
 public interface EntradaRepository extends JpaRepository<Entrada, Long> {
+    List<Entrada> findByDni(String dni);
 }

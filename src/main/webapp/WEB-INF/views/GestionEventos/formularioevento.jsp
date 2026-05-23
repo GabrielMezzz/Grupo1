@@ -42,10 +42,13 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Sede</label>
-          <select name="sede">
-            <option>Seleccionar...</option>
+          <select name="sede" id="selectSede" onchange="cargarCapacidad(this)">
+            <option value="">Seleccionar...</option>
             <c:forEach var="s" items="${sedes}">
-              <option ${eventoEditar != null && eventoEditar.sede == s.nombre ? 'selected' : ''}>${s.nombre}</option>
+              <option data-capacidad="${s.capacidad}"
+                ${eventoEditar != null && eventoEditar.sede == s.nombre ? 'selected' : ''}>
+                ${s.nombre}
+              </option>
             </c:forEach>
           </select>
         </div>
@@ -58,8 +61,8 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Capacidad</label>
-          <input type="number" name="capacidad" placeholder="Ej: 500" required
-                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}">
+          <input type="number" name="capacidad" id="inputCapacidad" placeholder="Se carga al elegir sede"
+                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}" readonly>
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -98,3 +101,10 @@
     </form>
   </div>
 </div>
+
+<script>
+function cargarCapacidad(select) {
+    const opcion = select.options[select.selectedIndex];
+    document.getElementById('inputCapacidad').value = opcion.getAttribute('data-capacidad') || '';
+}
+</script>

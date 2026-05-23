@@ -19,6 +19,11 @@ public class EntradaServiceImpl implements EntradaService {
     }
 
     @Override
+    public List<Entrada> listarEntradasPorDni(String dni) { // ── NUEVO
+        return entradaRepository.findByDni(dni);
+    }
+
+    @Override
     public void guardarEntrada(Entrada entrada) {
         entradaRepository.save(entrada);
     }

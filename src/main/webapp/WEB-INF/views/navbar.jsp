@@ -9,7 +9,10 @@
     <li><a href="${pageContext.request.contextPath}/contacto">Contacto</a></li>
     <c:choose>
       <c:when test="${not empty sessionScope.usuario}">
-        <li><a href="${pageContext.request.contextPath}/gestion">Gestión</a></li>
+        <li><a href="${pageContext.request.contextPath}/entradas/misEntradas">Mis Entradas</a></li>
+        <c:if test="${sessionScope.rol == 'Administrador'}">
+          <li><a href="${pageContext.request.contextPath}/gestion">Gestión</a></li>
+        </c:if>
         <li><a href="${pageContext.request.contextPath}/logout">Cerrar Sesión</a></li>
       </c:when>
       <c:otherwise>

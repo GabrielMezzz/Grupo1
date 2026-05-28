@@ -21,7 +21,7 @@
           <td>${u.nombre} ${u.apellido}</td>
           <td>${u.dni}</td>
           <td>${u.correo}</td>
-          <td>${u.telefono}</td>
+          <td>${u.telefonoFormateado}</td>
           <td><span style="background-color: #cce5ff; color: #004085; padding: 3px 10px; border-radius: 20px; font-size: 12px;">${u.rol}</span></td>
           <td><span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px;">${u.estado}</span></td>
           <td style="display: flex; gap: 6px;">

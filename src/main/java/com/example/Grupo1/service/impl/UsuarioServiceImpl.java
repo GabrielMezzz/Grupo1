@@ -19,7 +19,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void guardarUsuario(Usuario usuario) { usuarioRepository.save(usuario);}
+    public void guardarUsuario(Usuario usuario) {
+        // Normalizamos los datos simples antes de validar
+        usuario.setNombre(usuario.getNombre());
+        usuario.setApellido(usuario.getApellido());
+        usuario.setCorreo(usuario.getCorreo());
+        usuario.setTelefono(usuario.getTelefono());
+        usuario.setContrasena(usuario.getContrasena());
+
+        // Revisamos duplicados antes de guardar
+        validarUnicidad(usuario);
+        usuarioRepository.save(usuario);
+    }
 
     @Override
     public void eliminarUsuario(Long id) {
@@ -34,5 +45,34 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id).orElse(null);
+    }
+
+    // Valida que DNI, correo y telefono no se repitan
+    private void validarUnicidad(Usuario usuario) {
+        Usuario usuarioActual = null;
+        if (usuario.getId() != null) {
+            usuarioActual = usuarioRepository.findById(usuario.getId()).orElse(null);
+        }
+
+        if (usuario.getDni() != null) {
+            boolean mismoDni = usuarioActual != null && usuario.getDni().equals(usuarioActual.getDni());
+            if (!mismoDni && usuarioRepository.existsByDni(usuario.getDni())) {
+                throw new IllegalArgumentException("El DNI ya está registrado");
+            }
+        }
+
+        if (usuario.getCorreo() != null) {
+            boolean mismoCorreo = usuarioActual != null && usuario.getCorreo().equals(usuarioActual.getCorreo());
+            if (!mismoCorreo && usuarioRepository.existsByCorreo(usuario.getCorreo())) {
+                throw new IllegalArgumentException("El correo ya está registrado");
+            }
+        }
+
+        if (usuario.getTelefono() != null) {
+            boolean mismoTelefono = usuarioActual != null && usuario.getTelefono().equals(usuarioActual.getTelefono());
+            if (!mismoTelefono && usuarioRepository.existsByTelefono(usuario.getTelefono())) {
+                throw new IllegalArgumentException("El telefono ya está registrado");
+            }
+        }
     }
 }

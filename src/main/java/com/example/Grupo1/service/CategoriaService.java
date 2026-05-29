@@ -9,4 +9,5 @@ public interface CategoriaService {
     void guardarCategoria(Categoria categoria);
     void eliminarCategoria(Long id);
     Categoria obtenerPorId(Long id);
+    String validarCategoria(Categoria categoria); // ── NUEVO
 }

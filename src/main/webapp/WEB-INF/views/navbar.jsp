@@ -9,7 +9,7 @@
     <li><a href="${pageContext.request.contextPath}/contacto">Contacto</a></li>
     <c:choose>
       <c:when test="${not empty sessionScope.usuario}">
-        <li><a href="${pageContext.request.contextPath}/entradas/misEntradas">Mis Entradas</a></li>
+        <li><a href="${pageContext.request.contextPath}/entradas/EntradasCompradas">Mis Entradas</a></li>
         <c:if test="${sessionScope.rol == 'Administrador'}">
           <li><a href="${pageContext.request.contextPath}/gestion">Gestión</a></li>
         </c:if>

@@ -3,7 +3,6 @@ package com.example.Grupo1;
 import com.example.Grupo1.service.CategoriaService;
 import com.example.Grupo1.service.EntradaService;
 import com.example.Grupo1.service.EventoService;
-import com.example.Grupo1.service.SedeService;
 import com.example.Grupo1.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,6 @@ public class HomeController {
 
     @Autowired
     private CategoriaService categoriaService;
-
-    @Autowired
-    private SedeService sedeService;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -67,7 +63,6 @@ public class HomeController {
     public String eventos(Model model, @RequestParam(required = false) String compra) {
         model.addAttribute("eventos", eventoService.listarEventosActivos());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
-        model.addAttribute("sedes", sedeService.listarSedesActivas());
         if ("exitosa".equals(compra)) {
             model.addAttribute("compraExitosa", true);
         }

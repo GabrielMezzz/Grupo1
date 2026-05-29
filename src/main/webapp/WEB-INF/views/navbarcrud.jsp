@@ -7,9 +7,8 @@
     <li><a href="${pageContext.request.contextPath}/gestionusuarios">Gestión Usuarios</a></li>
     <li><a href="${pageContext.request.contextPath}/gestioneventos">Gestión Eventos</a></li>
     <li><a href="${pageContext.request.contextPath}/gestioncategorias">Gestión Categorías</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestionsedes">Gestión Sedes</a></li>
     <li><a href="${pageContext.request.contextPath}/gestionartistas">Gestión Artistas</a></li>
-        <li><a href="${pageContext.request.contextPath}/metricas">Metricas</a></li>
+    <li><a href="${pageContext.request.contextPath}/metricas">Metricas</a></li>
     <li><a href="${pageContext.request.contextPath}/logout">Cerrar Sesión</a></li>
   </ul>
 </nav>

@@ -15,16 +15,6 @@
         </div>
 
         <div class="campo-filtro">
-          <label for="sede">Sede</label>
-          <select id="sede" name="sede">
-            <option>Todas las sedes</option>
-            <c:forEach var="s" items="${sedes}">
-              <option value="${s.id}">${s.nombre}</option>
-            </c:forEach>
-          </select>
-        </div>
-
-        <div class="campo-filtro">
           <label for="fecha">Fecha</label>
           <input type="date" id="fecha" name="fecha">
         </div>

@@ -59,6 +59,36 @@
           </select>
         </div>
 
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Nombre de Sede</label>
+          <input type="text" name="nombreSede" placeholder="Ej: Estadio Nacional"
+                 value="${artistaEditar != null ? artistaEditar.nombreSede : ''}">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Dirección de Sede</label>
+          <input type="text" name="direccionSede" placeholder="Ej: Av. José Díaz s/n"
+                 value="${artistaEditar != null ? artistaEditar.direccionSede : ''}">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Ciudad</label>
+          <input type="text" name="ciudadSede" placeholder="Ej: Lima"
+                 value="${artistaEditar != null ? artistaEditar.ciudadSede : ''}">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Capacidad</label>
+          <input type="number" name="capacidadSede" placeholder="Ej: 5000"
+                 value="${artistaEditar != null ? artistaEditar.capacidadSede : ''}">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Fecha del Evento</label>
+          <input type="date" name="fechaEvento"
+                 value="${artistaEditar != null ? artistaEditar.fechaEvento : ''}">
+        </div>
+
       </div>
 
       <div style="display: flex; gap: 10px; margin-top: 10px;">

@@ -11,6 +11,9 @@
       <p style="font-size: 13px; color: #777; margin-top: 5px;">${a.genero}</p>
       <p style="font-size: 13px; color: #777;">${a.nacionalidad}</p>
       <p style="font-size: 13px; color: #777;">${a.correo}</p>
+      <p style="font-size: 13px; color: #777;">${a.nombreSede}</p>
+      <p style="font-size: 13px; color: #777;">${a.ciudadSede}</p>
+      <p style="font-size: 13px; color: #777;">Cap: ${a.capacidadSede}</p>
       <span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px; display: inline-block; margin-top: 8px;">${a.estado}</span>
       <div style="display: flex; gap: 8px; margin-top: 15px;">
         <a href="${pageContext.request.contextPath}/gestionartistas/editar/${a.id}" style="flex: 1;">

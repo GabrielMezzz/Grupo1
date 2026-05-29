@@ -26,7 +26,13 @@ public class CategoriaController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Categoria categoria) {
+    public String guardar(@ModelAttribute Categoria categoria, Model model) {
+        String error = categoriaService.validarCategoria(categoria);
+        if (error != null) {
+            model.addAttribute("error", error);
+            model.addAttribute("categorias", categoriaService.listarCategorias());
+            return "GestionCategorias/gestioncategorias";
+        }
         categoriaService.guardarCategoria(categoria);
         return "redirect:/gestioncategorias";
     }
@@ -49,7 +55,14 @@ public class CategoriaController {
     }
 
     @PostMapping("/actualizar")
-    public String actualizar(@ModelAttribute Categoria categoria) {
+    public String actualizar(@ModelAttribute Categoria categoria, Model model) {
+        String error = categoriaService.validarCategoria(categoria);
+        if (error != null) {
+            model.addAttribute("error", error);
+            model.addAttribute("categoriaEditar", categoria);
+            model.addAttribute("categorias", categoriaService.listarCategorias());
+            return "GestionCategorias/gestioncategorias";
+        }
         categoriaService.guardarCategoria(categoria);
         return "redirect:/gestioncategorias";
     }

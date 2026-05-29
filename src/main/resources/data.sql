@@ -12,17 +12,12 @@ INSERT INTO categorias (nombre, descripcion, estado) VALUES
                  'Preparate para un despliegue de talento y emocion que desafia tus sentidos: una experiencia monumental que no veras dos veces en la vida!',
                  'Activo');
 
-INSERT INTO sedes (nombre, direccion, ciudad, capacidad, telefono, tipo, estado) VALUES
-                ('Estadio Nacional', 'Av. Jose Diaz', 'Lima', 45000, '(01) 433-1718', 'Estadio', 'Activo'),
-                ('Teatro Municipal', 'Jr. Ica 377', 'Lima', 850, '(01) 428-2155', 'Teatro', 'Activo'),
-                ('Centro de Convenciones', 'Av. Javier Prado Este 2465', 'Lima', 3000, '(01) 611-8000', 'Auditorio', 'Activo'),
-                ('Parque de la Exposicion', 'Paseo Colon', 'Lima', 10000, '(01) 423-2000', 'Parque', 'Activo');
+INSERT INTO artistas (nombre_artistico, genero, nacionalidad, correo, telefono, estado, nombre_sede, direccion_sede, ciudad_sede, capacidad_sede, fecha_evento) VALUES
+                ('Banda Rockera', 'Rock', 'Peruana', 'banda@gmail.com', '987654321', 'Activo', 'Estadio Nacional', 'Av. José Díaz s/n', 'Lima', 45000, '2026-08-15'),
+                ('Teatro Nacional', 'Teatro', 'Peruana', 'teatro@gmail.com', '912345678', 'Activo', 'Teatro Municipal', 'Jr. Ica 377', 'Lima', 850, '2026-09-20'),
+                ('Franco Escamilla', 'Comedia', 'Mexicana', 'franco@gmail.com', '999888777', 'Activo', 'Centro de Convenciones', 'Av. Javier Prado Este 2465', 'Lima', 3000, '2026-10-05'),
+                ('Circo del Sol', 'Arte Vivo', 'Internacional', 'artevivo@gmail.com', '945678901', 'Activo', 'Parque de la Exposición', 'Paseo Colón s/n', 'Lima', 10000, '2026-12-05');
 
-INSERT INTO artistas (nombre_artistico, genero, nacionalidad, correo, telefono, estado) VALUES
-                ('Banda Rockera', 'Rock', 'Peruana', 'banda@gmail.com', '987654321', 'Activo'),
-                ('Teatro Nacional', 'Teatro', 'Peruana', 'teatro@gmail.com', '912345678', 'Activo'),
-                ('Franco Escamilla', 'Comedia', 'Mexicana', 'franco@gmail.com', '999888777', 'Activo'),
-                ('Arte Vivo', 'Espectaculo', 'Internacional', 'artevivo@gmail.com', '945678901', 'Activo');
 INSERT INTO eventos (nombre, categoria, fecha, sede, precio, capacidad, artista, estado) VALUES
                 ('Gran Concierto Rock', 'Conciertos', '2026-05-15', 'Estadio Nacional', 150, 500, 'Banda Rockera', 'Activo'),
                 ('Romeo y Julieta', 'Teatro', '2026-05-20', 'Teatro Municipal', 80, 200, 'Teatro Nacional', 'Activo'),

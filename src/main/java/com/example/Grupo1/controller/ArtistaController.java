@@ -26,8 +26,14 @@ public class ArtistaController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Artista artista) {
-        artistaService.guardarArtista(artista);
+    public String guardar(@ModelAttribute Artista artista, Model model) {
+        try {
+            artistaService.guardarArtista(artista);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("artistas", artistaService.listarArtistas());
+            return "GestionArtistas/gestionArtistas";
+        }
         return "redirect:/gestionartistas";
     }
 
@@ -49,8 +55,15 @@ public class ArtistaController {
     }
 
     @PostMapping("/actualizar")
-    public String actualizar(@ModelAttribute Artista artista) {
-        artistaService.guardarArtista(artista);
+    public String actualizar(@ModelAttribute Artista artista, Model model) {
+        try {
+            artistaService.guardarArtista(artista);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("artistaEditar", artista);
+            model.addAttribute("artistas", artistaService.listarArtistas());
+            return "GestionArtistas/gestionArtistas";
+        }
         return "redirect:/gestionartistas";
     }
 }

@@ -9,4 +9,5 @@ public interface UsuarioService {
     void guardarUsuario(Usuario usuario);
     void eliminarUsuario(Long id);
     Usuario buscarPorId(Long id);
+    void banearUsuario(Long id); // ── NUEVO
 }

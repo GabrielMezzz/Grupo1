@@ -35,22 +35,31 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Artista / Compañía</label>
+          <select name="artista" id="selectArtista" onchange="autocompletar()">
+            <option value="">Seleccionar...</option>
+            <c:forEach var="a" items="${artistas}">
+              <option value="${a.nombreArtistico}"
+                      data-sede="${a.nombreSede}"
+                      data-capacidad="${a.capacidadSede}"
+                      data-fecha="${a.fechaEvento}"
+                ${eventoEditar != null && eventoEditar.artista == a.nombreArtistico ? 'selected' : ''}>
+                ${a.nombreArtistico}
+              </option>
+            </c:forEach>
+          </select>
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Fecha</label>
-          <input type="date" name="fecha" required
+          <input type="date" name="fecha" id="fecha" required
                  value="${eventoEditar != null ? eventoEditar.fecha : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Sede</label>
-          <select name="sede" id="selectSede" onchange="cargarCapacidad(this)">
-            <option value="">Seleccionar...</option>
-            <c:forEach var="s" items="${sedes}">
-              <option data-capacidad="${s.capacidad}"
-                ${eventoEditar != null && eventoEditar.sede == s.nombre ? 'selected' : ''}>
-                ${s.nombre}
-              </option>
-            </c:forEach>
-          </select>
+          <input type="text" name="sede" id="sede" placeholder="Se autocompleta al seleccionar artista" readonly
+                 value="${eventoEditar != null ? eventoEditar.sede : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -61,18 +70,8 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Capacidad</label>
-          <input type="number" name="capacidad" id="inputCapacidad" placeholder="Se carga al elegir sede"
-                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}" readonly>
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Artista / Compañía</label>
-          <select name="artista">
-            <option>Seleccionar...</option>
-            <c:forEach var="a" items="${artistas}">
-              <option ${eventoEditar != null && eventoEditar.artista == a.nombreArtistico ? 'selected' : ''}>${a.nombreArtistico}</option>
-            </c:forEach>
-          </select>
+          <input type="number" name="capacidad" id="capacidad" placeholder="Se autocompleta al seleccionar artista" readonly
+                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -103,8 +102,11 @@
 </div>
 
 <script>
-function cargarCapacidad(select) {
+function autocompletar() {
+    const select = document.getElementById('selectArtista');
     const opcion = select.options[select.selectedIndex];
-    document.getElementById('inputCapacidad').value = opcion.getAttribute('data-capacidad') || '';
+    document.getElementById('sede').value = opcion.getAttribute('data-sede') || '';
+    document.getElementById('capacidad').value = opcion.getAttribute('data-capacidad') || '';
+    document.getElementById('fecha').value = opcion.getAttribute('data-fecha') || '';
 }
 </script>

@@ -16,7 +16,12 @@ public class Evento {
     private String sede;
     private Double precio;
     private Integer capacidad;
-    private String artista;
+
+    // Relacion con el artista asociado
+    @ManyToOne
+    @JoinColumn(name = "artista_id")
+    private Artista artista;
+
     private String estado;
 
     public Long getId() { return id; }
@@ -40,8 +45,8 @@ public class Evento {
     public Integer getCapacidad() { return capacidad; }
     public void setCapacidad(Integer capacidad) { this.capacidad = capacidad; }
 
-    public String getArtista() { return artista; }
-    public void setArtista(String artista) { this.artista = artista; }
+    public Artista getArtista() { return artista; }
+    public void setArtista(Artista artista) { this.artista = artista; }
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }

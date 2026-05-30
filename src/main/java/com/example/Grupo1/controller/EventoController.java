@@ -1,15 +1,15 @@
 package com.example.Grupo1.controller;
 
+import com.example.Grupo1.model.Artista;
 import com.example.Grupo1.model.Evento;
 import com.example.Grupo1.service.ArtistaService;
 import com.example.Grupo1.service.CategoriaService;
 import com.example.Grupo1.service.EventoService;
-import com.example.Grupo1.service.SedeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/gestioneventos")
@@ -17,9 +17,6 @@ public class EventoController {
 
     @Autowired
     private EventoService eventoService;
-
-    @Autowired
-    private SedeService sedeService;
 
     @Autowired
     private CategoriaService categoriaService;
@@ -35,14 +32,15 @@ public class EventoController {
         }
         model.addAttribute("eventos", eventoService.listarEventos());
         model.addAttribute("evento", new Evento());
-        model.addAttribute("sedes", sedeService.listarSedesActivas());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
-        model.addAttribute("artistas", artistaService.listarArtistasActivos());
+        model.addAttribute("artistas", artistaService.listarArtistas());
         return "GestionEventos/gestioneventos";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Evento evento) {
+    public String guardar(@ModelAttribute Evento evento, @RequestParam Long artistaId) {
+        Artista artista = artistaService.obtenerPorId(artistaId);
+        evento.setArtista(artista);
         eventoService.guardarEvento(evento);
         return "redirect:/gestioneventos";
     }
@@ -61,14 +59,15 @@ public class EventoController {
         }
         model.addAttribute("eventoEditar", eventoService.buscarPorId(id));
         model.addAttribute("eventos", eventoService.listarEventos());
-        model.addAttribute("sedes", sedeService.listarSedesActivas());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
-        model.addAttribute("artistas", artistaService.listarArtistasActivos());
+        model.addAttribute("artistas", artistaService.listarArtistas());
         return "GestionEventos/gestioneventos";
     }
 
     @PostMapping("/actualizar")
-    public String actualizar(@ModelAttribute Evento evento) {
+    public String actualizar(@ModelAttribute Evento evento, @RequestParam Long artistaId) {
+        Artista artista = artistaService.obtenerPorId(artistaId);
+        evento.setArtista(artista);
         eventoService.guardarEvento(evento);
         return "redirect:/gestioneventos";
     }

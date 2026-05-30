@@ -3,13 +3,12 @@
 <nav class="navbar">
   <a href="${pageContext.request.contextPath}/main" class="logo">Teleticket</a>
   <ul>
-    <li><a href="${pageContext.request.contextPath}/gestion">Gestión Entradas</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestionusuarios">Gestión Usuarios</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestioneventos">Gestión Eventos</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestioncategorias">Gestión Categorías</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestionsedes">Gestión Sedes</a></li>
-    <li><a href="${pageContext.request.contextPath}/gestionartistas">Gestión Artistas</a></li>
-        <li><a href="${pageContext.request.contextPath}/metricas">Metricas</a></li>
-    <li><a href="${pageContext.request.contextPath}/logout">Cerrar Sesión</a></li>
+    <li><a href="${pageContext.request.contextPath}/gestion">Gestion Entradas</a></li>
+    <li><a href="${pageContext.request.contextPath}/gestionusuarios">Gestion Usuarios</a></li>
+    <li><a href="${pageContext.request.contextPath}/gestioneventos">Gestion Eventos</a></li>
+    <li><a href="${pageContext.request.contextPath}/gestioncategorias">Gestion Categorias</a></li>
+    <li><a href="${pageContext.request.contextPath}/gestionartistas">Gestion Artistas</a></li>
+    <li><a href="${pageContext.request.contextPath}/metricas">Metricas</a></li>
+    <li><a href="${pageContext.request.contextPath}/logout">Cerrar Sesion</a></li>
   </ul>
 </nav>

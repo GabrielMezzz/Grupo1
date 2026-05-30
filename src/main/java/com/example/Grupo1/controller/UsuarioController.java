@@ -97,17 +97,17 @@ public class UsuarioController {
         }
 
         Usuario usuarioDni = usuarioService.buscarPorDni(usuario.getDni());
-        if (usuarioDni != null && usuarioDni.getId() != null && !usuarioDni.getId().equals(usuario.getId())) {
+        if (esOtroUsuario(usuarioDni, usuario)) {
             return volverConError(model, usuario, "errorDni", "El DNI ya está registrado");
         }
 
         Usuario usuarioCorreo = usuarioService.buscarPorCorreo(correoLimpio);
-        if (usuarioCorreo != null && usuarioCorreo.getId() != null && !usuarioCorreo.getId().equals(usuario.getId())) {
+        if (esOtroUsuario(usuarioCorreo, usuario)) {
             return volverConError(model, usuario, "errorCorreo", "El correo ya está registrado");
         }
 
         Usuario usuarioTelefono = usuarioService.buscarPorTelefono(telefonoLimpio);
-        if (usuarioTelefono != null && usuarioTelefono.getId() != null && !usuarioTelefono.getId().equals(usuario.getId())) {
+        if (esOtroUsuario(usuarioTelefono, usuario)) {
             return volverConError(model, usuario, "errorTelefono", "El teléfono ya está registrado");
         }
 
@@ -128,5 +128,19 @@ public class UsuarioController {
         model.addAttribute("usuarioEditar", usuario);
         model.addAttribute(atributoError, mensaje);
         return "GestionUsuarios/gestionusuarios";
+    }
+
+    // Si el usuario encontrado no es el mismo que se esta editando, hay conflicto
+    private boolean esOtroUsuario(Usuario encontrado, Usuario actual) {
+        if (encontrado == null) {
+            return false;
+        }
+        if (actual.getId() == null) {
+            return true;
+        }
+        if (encontrado.getId() == null) {
+            return true;
+        }
+        return !encontrado.getId().equals(actual.getId());
     }
 }

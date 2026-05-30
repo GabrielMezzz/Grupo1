@@ -1,7 +1,9 @@
 package com.example.Grupo1.controller;
 
 import com.example.Grupo1.model.Artista;
+import com.example.Grupo1.model.Evento;
 import com.example.Grupo1.service.ArtistaService;
+import com.example.Grupo1.service.EventoService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ public class ArtistaController {
 
     @Autowired
     private ArtistaService artistaService;
+
+    @Autowired
+    private EventoService eventoService;
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
@@ -33,6 +38,11 @@ public class ArtistaController {
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
+        for (Evento evento : eventoService.listarEventos()) {
+            if (evento.getArtista() != null && evento.getArtista().getId().equals(id)) {
+                return "redirect:/gestionartistas";
+            }
+        }
         artistaService.eliminarArtista(id);
         return "redirect:/gestionartistas";
     }

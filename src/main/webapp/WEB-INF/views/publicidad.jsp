@@ -39,7 +39,8 @@
                 <span class="publi-tag">${evento.categoria}</span>
                 <h2 class="publi-nombre">${evento.nombre}</h2>
                 <p class="publi-desc">
-                    Presentamos a <strong>${evento.artista}</strong>.
+                    Presentamos a <strong>${evento.artista.nombreArtistico}</strong>.
+                    Hora: <strong>${evento.artista.hora}</strong>.
                     Este evento forma parte de nuestra agenda cultural anual.
                 </p>
                 <span class="publi-sede"><i class="fa-solid fa-location-dot"></i> ${evento.sede}</span>

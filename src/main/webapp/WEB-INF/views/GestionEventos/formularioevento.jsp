@@ -25,11 +25,11 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Categoría</label>
-          <select name="categoria">
-            <option>Seleccionar...</option>
+          <label>Categoria</label>
+          <select name="categoria" required>
+            <option value="">Seleccionar...</option>
             <c:forEach var="cat" items="${categorias}">
-              <option ${eventoEditar != null && eventoEditar.categoria == cat.nombre ? 'selected' : ''}>${cat.nombre}</option>
+              <option value="${cat.nombre}" ${eventoEditar != null && eventoEditar.categoria == cat.nombre ? 'selected' : ''}>${cat.nombre}</option>
             </c:forEach>
           </select>
         </div>
@@ -41,16 +41,9 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Sede</label>
-          <select name="sede" id="selectSede" onchange="cargarCapacidad(this)">
-            <option value="">Seleccionar...</option>
-            <c:forEach var="s" items="${sedes}">
-              <option data-capacidad="${s.capacidad}"
-                ${eventoEditar != null && eventoEditar.sede == s.nombre ? 'selected' : ''}>
-                ${s.nombre}
-              </option>
-            </c:forEach>
-          </select>
+          <label>Lugar</label>
+          <input type="text" name="sede" placeholder="Ej: Estadio Nacional" required
+                 value="${eventoEditar != null ? eventoEditar.sede : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -61,26 +54,29 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Capacidad</label>
-          <input type="number" name="capacidad" id="inputCapacidad" placeholder="Se carga al elegir sede"
-                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}" readonly>
+          <input type="number" name="capacidad" placeholder="Ej: 500" required
+                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Artista / Compañía</label>
-          <select name="artista">
-            <option>Seleccionar...</option>
+          <label>Artista</label>
+          <select name="artistaId" required>
+            <option value="">Seleccionar...</option>
             <c:forEach var="a" items="${artistas}">
-              <option ${eventoEditar != null && eventoEditar.artista == a.nombreArtistico ? 'selected' : ''}>${a.nombreArtistico}</option>
+              <option value="${a.id}"
+                ${eventoEditar != null && eventoEditar.artista != null && eventoEditar.artista.id == a.id ? 'selected' : ''}>
+                ${a.nombreArtistico} - ${a.hora}
+              </option>
             </c:forEach>
           </select>
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Estado</label>
-          <select name="estado">
-            <option ${eventoEditar != null && eventoEditar.estado == 'Activo' ? 'selected' : ''}>Activo</option>
-            <option ${eventoEditar != null && eventoEditar.estado == 'Inactivo' ? 'selected' : ''}>Inactivo</option>
-            <option ${eventoEditar != null && eventoEditar.estado == 'Cancelado' ? 'selected' : ''}>Cancelado</option>
+          <select name="estado" required>
+            <option value="Activo" ${eventoEditar != null && eventoEditar.estado == 'Activo' ? 'selected' : ''}>Activo</option>
+            <option value="Inactivo" ${eventoEditar != null && eventoEditar.estado == 'Inactivo' ? 'selected' : ''}>Inactivo</option>
+            <option value="Cancelado" ${eventoEditar != null && eventoEditar.estado == 'Cancelado' ? 'selected' : ''}>Cancelado</option>
           </select>
         </div>
 
@@ -101,10 +97,3 @@
     </form>
   </div>
 </div>
-
-<script>
-function cargarCapacidad(select) {
-    const opcion = select.options[select.selectedIndex];
-    document.getElementById('inputCapacidad').value = opcion.getAttribute('data-capacidad') || '';
-}
-</script>

@@ -1,19 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  <!DOCTYPE html>
-  <html lang="es">
-
-  <head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Teleticket</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  </head>
-
-  <body>
+</head>
+<body>
 
     <main class="dashboard-container">
-      <h2 class="dashboard-titulo">Accesos Rápidos</h2>
+      <h2 class="dashboard-titulo">Accesos Rapidos</h2>
 
       <div class="dashboard-grid">
         <a href="${pageContext.request.contextPath}/gestioneventos" class="dash-link">
@@ -26,7 +24,7 @@
         <a href="${pageContext.request.contextPath}/gestioncategorias" class="dash-link">
           <div class="dash-card">
             <i class="fa-solid fa-folder dash-icon"></i>
-            <p class="dash-text">Categorías</p>
+            <p class="dash-text">Categorias</p>
           </div>
         </a>
 
@@ -44,13 +42,6 @@
           </div>
         </a>
 
-        <a href="${pageContext.request.contextPath}/gestionsedes" class="dash-link">
-          <div class="dash-card">
-            <i class="fa-solid fa-location-dot dash-icon"></i>
-            <p class="dash-text">Sedes</p>
-          </div>
-        </a>
-
         <a href="${pageContext.request.contextPath}/gestionartistas" class="dash-link">
           <div class="dash-card">
             <i class="fa-solid fa-microphone dash-icon"></i>
@@ -61,7 +52,7 @@
         <a href="${pageContext.request.contextPath}/metricas" class="dash-link">
           <div class="dash-card">
             <i class="fa-solid fa-chart-bar dash-icon"></i>
-            <p class="dash-text">Métricas</p>
+            <p class="dash-text">Metricas</p>
           </div>
         </a>
       </div>
@@ -69,6 +60,5 @@
 
     <%@ include file="footer.jsp" %>
 
-  </body>
-
-  </html>
+</body>
+</html>

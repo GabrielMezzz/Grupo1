@@ -3,7 +3,7 @@
 
 <div class="contenedor">
   <section class="eventos-seccion">
-    <h3 class="seccion-titulo">Próximos Eventos</h3>
+    <h3 class="seccion-titulo">Proximos Eventos</h3>
 
     <div class="eventos-grid">
       <c:forEach var="evento" items="${eventos}">
@@ -14,12 +14,13 @@
             <div class="evento-detalles">
               <p><i class="fa-solid fa-calendar-days"></i> FECHA: ${evento.fecha}</p>
               <p><i class="fa-solid fa-location-dot"></i> LUGAR: ${evento.sede}</p>
-              <p><i class="fa-solid fa-microphone"></i> ARTISTA: ${evento.artista}</p>
+              <p><i class="fa-solid fa-microphone"></i> ARTISTA: ${evento.artista.nombreArtistico}</p>
+              <p><i class="fa-solid fa-clock"></i> HORA: ${evento.artista.hora}</p>
             </div>
 
             <div class="cantidad-wrapper">
               <span class="cantidad-label">Cantidad:</span>
-              <button type="button" class="cantidad-btn" onclick="decrementar('cant_${evento.id}')">−</button>
+              <button type="button" class="cantidad-btn" onclick="decrementar('cant_${evento.id}')">-</button>
               <input type="number" id="cant_${evento.id}" class="cantidad-input" value="1" min="1" max="10">
               <button type="button" class="cantidad-btn" onclick="incrementar('cant_${evento.id}')">+</button>
             </div>

@@ -25,9 +25,9 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Género / Tipo</label>
+          <label>Genero / Tipo</label>
           <select name="genero">
-            <c:forEach var="g" items="${['Rock','Pop','Teatro','Comedia','Clásica','Urbano']}">
+            <c:forEach var="g" items="${['Rock','Pop','Teatro','Comedia','Clasica','Urbano']}">
               <option ${artistaEditar != null && artistaEditar.genero == g ? 'selected' : ''}>${g}</option>
             </c:forEach>
           </select>
@@ -46,9 +46,15 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Teléfono / Manager</label>
+          <label>Telefono / Manager</label>
           <input type="text" name="telefono" placeholder="Ej: 987654321" required
                  value="${artistaEditar != null ? artistaEditar.telefono : ''}">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Hora</label>
+          <input type="time" name="hora" required
+                 value="${artistaEditar != null ? artistaEditar.hora : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">

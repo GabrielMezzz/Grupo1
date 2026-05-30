@@ -15,6 +15,7 @@ public class Artista {
     private String nacionalidad;
     private String correo;
     private String telefono;
+    private String hora;
     private String estado;
 
     public Long getId() { return id; }
@@ -34,6 +35,9 @@ public class Artista {
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
+
+    public String getHora() { return hora; }
+    public void setHora(String hora) { this.hora = hora; }
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }

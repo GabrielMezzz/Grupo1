@@ -6,9 +6,11 @@
       <tr>
         <th>#</th>
         <th>Nombre</th>
-        <th>Categoría</th>
+        <th>Categoria</th>
         <th>Fecha</th>
-        <th>Sede</th>
+        <th>Artista</th>
+        <th>Hora</th>
+        <th>Lugar</th>
         <th>Precio</th>
         <th>Capacidad</th>
         <th>Estado</th>
@@ -22,6 +24,8 @@
           <td>${e.nombre}</td>
           <td>${e.categoria}</td>
           <td>${e.fecha}</td>
+          <td>${e.artista.nombreArtistico}</td>
+          <td>${e.artista.hora}</td>
           <td>${e.sede}</td>
           <td>S/. ${e.precio}</td>
           <td>${e.capacidad}</td>

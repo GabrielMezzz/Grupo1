@@ -9,4 +9,5 @@ public interface ArtistaService {
     void guardarArtista(Artista artista);
     void eliminarArtista(Long id);
     Artista obtenerPorId(Long id);
+    void descontarCapacidad(String nombreArtistico, int cantidad);
 }

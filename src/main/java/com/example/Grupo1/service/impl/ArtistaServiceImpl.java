@@ -5,6 +5,7 @@ import com.example.Grupo1.repository.ArtistaRepository;
 import com.example.Grupo1.service.ArtistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 import java.util.List;
 
 @Service
@@ -27,6 +28,18 @@ public class ArtistaServiceImpl implements ArtistaService {
     public void guardarArtista(Artista artista) {
         validarUnicidad(artista);
         artistaRepository.save(artista);
+    }
+
+    @Override
+    public void descontarCapacidad(String nombreArtistico, int cantidad) {
+        Optional<Artista> artistaOpt = artistaRepository.findByNombreArtistico(nombreArtistico);
+        if (artistaOpt.isPresent()) {
+            Artista artista = artistaOpt.get();
+            int nuevaCapacidad = artista.getCapacidadSede() - cantidad;
+            if (nuevaCapacidad < 0) nuevaCapacidad = 0;
+            artista.setCapacidadSede(nuevaCapacidad);
+            artistaRepository.save(artista);
+        }
     }
 
     @Override

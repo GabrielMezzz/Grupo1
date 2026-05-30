@@ -12,7 +12,6 @@
         <th>Precio</th>
         <th>Fecha de Compra</th>
         <th>Estado</th>
-        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -25,11 +24,6 @@
           <td>S/. ${e.precio}</td>
           <td>${e.fechaCompra}</td>
           <td><span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px;">${e.estado}</span></td>
-          <td>
-            <a href="${pageContext.request.contextPath}/entradas/eliminar/${e.id}">
-              <button class="btn-secundario" style="padding: 5px 12px; font-size: 12px;">Eliminar</button>
-            </a>
-          </td>
         </tr>
       </c:forEach>
     </tbody>

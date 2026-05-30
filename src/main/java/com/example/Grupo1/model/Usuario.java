@@ -62,13 +62,11 @@ public class Usuario {
 
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) {
-        // Guardamos el correo limpio y en minusculas
         this.correo = correo == null ? null : correo.trim().toLowerCase();
     }
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) {
-        // Guardamos solo los numeros para que luego sea facil formatearlo
         this.telefono = telefono == null ? null : telefono.replace(" ", "");
     }
 
@@ -77,23 +75,19 @@ public class Usuario {
 
     public String getContrasena() { return contrasena; }
     public void setContrasena(String contrasena) {
-        // Quitamos solo espacios del inicio y final
         this.contrasena = contrasena == null ? null : contrasena.trim();
+    }
+
+    public String getTelefonoFormateado() {
+        if (telefono == null || telefono.length() != 9) {
+            return telefono;
+        }
+        return telefono.substring(0, 3) + " " + telefono.substring(3, 6) + " " + telefono.substring(6, 9);
     }
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
 
-    // Devuelve el telefono con formato visual: 987 654 321
-    public String getTelefonoFormateado() {
-        if (telefono == null || telefono.length() != 9) {
-            return telefono;
-        }
-
-        return telefono.substring(0, 3) + " " + telefono.substring(3, 6) + " " + telefono.substring(6, 9);
-    }
-
-    // Capitaliza cada palabra de forma simple
     private String capitalizarPalabras(String texto) {
         if (texto == null) {
             return null;
@@ -118,6 +112,7 @@ public class Usuario {
 
             resultado += palabra.substring(0, 1).toUpperCase() + palabra.substring(1);
         }
+
 
         return resultado;
     }

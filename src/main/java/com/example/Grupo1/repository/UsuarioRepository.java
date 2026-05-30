@@ -13,11 +13,14 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
     List<Usuario> findByEstado(String estado);
+    Optional<Usuario> findByDni(String dni);
+    Optional<Usuario> findByCorreo(String correo);
+    Optional<Usuario> findByTelefono(String telefono);
     boolean existsByDni(String dni);
     boolean existsByCorreo(String correo);
     boolean existsByTelefono(String telefono);
 
     @Modifying
     @Query("UPDATE Usuario u SET u.estado = 'Inactivo' WHERE u.id = :id")
-    void banearUsuario(@Param("id") Long id); // ── NUEVO
+    void banearUsuario(@Param("id") Long id);
 }

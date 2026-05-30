@@ -8,6 +8,12 @@ public interface UsuarioService {
     List<Usuario> listarUsuariosActivos();
     void guardarUsuario(Usuario usuario);
     void eliminarUsuario(Long id);
+    void banearUsuario(Long id);
     Usuario buscarPorId(Long id);
-    void banearUsuario(Long id); // ── NUEVO
+    Usuario buscarPorDni(String dni);
+    Usuario buscarPorCorreo(String correo);
+    Usuario buscarPorTelefono(String telefono);
+    boolean existePorDni(String dni);
+    boolean existePorCorreo(String correo);
+    boolean existePorTelefono(String telefono);
 }

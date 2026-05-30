@@ -25,6 +25,7 @@ public class EntradaController {
     @Autowired
     private EventoService eventoService;
 
+
     @GetMapping("/comprar/{eventoId}")
     public String comprar(@PathVariable Long eventoId,
                           @RequestParam(defaultValue = "1") int cantidad,
@@ -36,16 +37,23 @@ public class EntradaController {
         Evento evento = eventoService.buscarPorId(eventoId);
         Usuario u = (Usuario) session.getAttribute("usuarioObj");
 
+        if (evento.getCapacidad() < cantidad) {
+            return "redirect:/eventos?error=capacidad";
+        }
+
         for (int i = 0; i < cantidad; i++) {
             Entrada entrada = new Entrada();
-            entrada.setNombre(u != null ? u.getNombre() : "Invitado");
-            entrada.setDni(u != null ? u.getDni() : "-");
+            entrada.setNombre(u.getNombre());
+            entrada.setDni(u.getDni());
             entrada.setEvento(evento.getNombre());
             entrada.setPrecio(evento.getPrecio());
             entrada.setFechaCompra(LocalDate.now());
             entrada.setEstado("Vendida");
             entradaService.guardarEntrada(entrada);
         }
+
+        evento.setCapacidad(evento.getCapacidad() - cantidad);
+        eventoService.guardarEvento(evento);
 
         return "redirect:/eventos?compra=exitosa";
     }
@@ -62,7 +70,6 @@ public class EntradaController {
 
         List<Entrada> entradas = entradaService.listarEntradasPorDni(u.getDni());
 
-        // Agrupar por evento
         Map<String, Map<String, Object>> agrupadas = new LinkedHashMap<>();
         for (Entrada e : entradas) {
             String key = e.getEvento();
@@ -76,9 +83,9 @@ public class EntradaController {
                 agrupadas.put(key, datos);
             } else {
                 Map<String, Object> datos = agrupadas.get(key);
-                int cantidad = (int) datos.get("cantidad") + 1;
+                int cant = (int) datos.get("cantidad") + 1;
                 double total = (double) datos.get("total") + e.getPrecio();
-                datos.put("cantidad", cantidad);
+                datos.put("cantidad", cant);
                 datos.put("total", total);
             }
         }
@@ -91,7 +98,7 @@ public class EntradaController {
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
         entradaService.eliminarEntrada(id);
-        return "EntradaUsuario";
+        return "redirect:/entradas/EntradasCompradas";
     }
 
     @GetMapping("/metricas")

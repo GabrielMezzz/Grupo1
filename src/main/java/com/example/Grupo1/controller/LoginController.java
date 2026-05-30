@@ -4,11 +4,9 @@ import com.example.Grupo1.model.Usuario;
 import com.example.Grupo1.repository.UsuarioRepository;
 import com.example.Grupo1.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
@@ -62,22 +60,55 @@ public class LoginController {
     }
 
     @PostMapping("/registro")
-    public String procesarRegistro(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            cargarErroresRegistro(usuario, bindingResult, model);
+    public String procesarRegistro(@ModelAttribute("usuario") Usuario usuario, Model model) {
+        Usuario usuarioDni = usuarioService.buscarPorDni(usuario.getDni());
+        if (usuarioDni != null) {
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("errorDni", "El DNI ya está registrado");
             return "registro";
+        }
+
+        String correoLimpio = usuario.getCorreo();
+        if (correoLimpio != null) {
+            correoLimpio = correoLimpio.trim().toLowerCase();
+        }
+
+        Usuario usuarioCorreo = usuarioService.buscarPorCorreo(correoLimpio);
+        if (usuarioCorreo != null) {
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("errorCorreo", "El correo ya está registrado");
+            return "registro";
+        }
+
+        String telefonoLimpio = usuario.getTelefono();
+        if (telefonoLimpio != null) {
+            while (telefonoLimpio.contains(" ")) {
+                telefonoLimpio = telefonoLimpio.replace(" ", "");
+            }
+        }
+
+        Usuario usuarioTelefono = usuarioService.buscarPorTelefono(telefonoLimpio);
+        if (usuarioTelefono != null) {
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("errorTelefono", "El teléfono ya está registrado");
+            return "registro";
+        }
+
+        if (correoLimpio != null) {
+            usuario.setCorreo(correoLimpio);
+        }
+        if (telefonoLimpio != null) {
+            usuario.setTelefono(telefonoLimpio);
+        }
+
+        String contrasenaLimpia = usuario.getContrasena();
+        if (contrasenaLimpia != null) {
+            usuario.setContrasena(contrasenaLimpia.trim());
         }
 
         usuario.setRol("Cliente");
         usuario.setEstado("Activo");
-
-        try {
-            usuarioService.guardarUsuario(usuario);
-        } catch (IllegalArgumentException ex) {
-            cargarErroresServicioRegistro(usuario, ex.getMessage(), model);
-            return "registro";
-        }
-
+        usuarioService.guardarUsuario(usuario);
         return "redirect:/login";
     }
 
@@ -85,44 +116,5 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/main";
-    }
-
-    // Devuelve los errores de validacion en la misma pagina de registro
-    private void cargarErroresRegistro(Usuario usuario, BindingResult bindingResult, Model model) {
-        model.addAttribute("usuario", usuario);
-
-        if (bindingResult.hasFieldErrors("nombre")) {
-            model.addAttribute("errorNombre", bindingResult.getFieldError("nombre").getDefaultMessage());
-        }
-        if (bindingResult.hasFieldErrors("apellido")) {
-            model.addAttribute("errorApellido", bindingResult.getFieldError("apellido").getDefaultMessage());
-        }
-        if (bindingResult.hasFieldErrors("dni")) {
-            model.addAttribute("errorDni", bindingResult.getFieldError("dni").getDefaultMessage());
-        }
-        if (bindingResult.hasFieldErrors("correo")) {
-            model.addAttribute("errorCorreo", bindingResult.getFieldError("correo").getDefaultMessage());
-        }
-        if (bindingResult.hasFieldErrors("telefono")) {
-            model.addAttribute("errorTelefono", bindingResult.getFieldError("telefono").getDefaultMessage());
-        }
-        if (bindingResult.hasFieldErrors("contrasena")) {
-            model.addAttribute("errorContrasena", bindingResult.getFieldError("contrasena").getDefaultMessage());
-        }
-    }
-
-    // Mensajes simples cuando el dato ya existe en la base de datos
-    private void cargarErroresServicioRegistro(Usuario usuario, String mensaje, Model model) {
-        model.addAttribute("usuario", usuario);
-
-        if (mensaje.contains("DNI")) {
-            model.addAttribute("errorDni", mensaje);
-        } else if (mensaje.contains("correo")) {
-            model.addAttribute("errorCorreo", mensaje);
-        } else if (mensaje.contains("telefono")) {
-            model.addAttribute("errorTelefono", mensaje);
-        } else {
-            model.addAttribute("error", mensaje);
-        }
     }
 }

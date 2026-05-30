@@ -20,34 +20,22 @@
                     <label>Nombre</label>
                     <input type="text" name="nombre" placeholder="Ej: Juan"
                            value="${usuario.nombre}"
-                           required
-                           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"
                            oninput="capitalizarTexto(this)">
-                    <c:if test="${not empty errorNombre}">
-                        <small style="color: #b00020;">${errorNombre}</small>
-                    </c:if>
                 </div>
 
                 <div class="form-grupo">
                     <label>Apellido</label>
                     <input type="text" name="apellido" placeholder="Ej: Pérez"
                            value="${usuario.apellido}"
-                           required
-                           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"
                            oninput="capitalizarTexto(this)">
-                    <c:if test="${not empty errorApellido}">
-                        <small style="color: #b00020;">${errorApellido}</small>
-                    </c:if>
                 </div>
 
                 <div class="form-grupo">
                     <label>DNI</label>
                     <input type="text" name="dni" placeholder="Ej: 12345678"
                            value="${usuario.dni}"
-                           required
                            maxlength="8"
                            inputmode="numeric"
-                           pattern="[0-9]{8}"
                            oninput="soloNumeros(this, 8)">
                     <c:if test="${not empty errorDni}">
                         <small style="color: #b00020;">${errorDni}</small>
@@ -56,9 +44,8 @@
 
                 <div class="form-grupo">
                     <label>Correo electrónico</label>
-                    <input type="email" name="correo" placeholder="Ej: juan@gmail.com"
-                           value="${usuario.correo}"
-                           required>
+                    <input type="text" name="correo" placeholder="Ej: juan@gmail.com"
+                           value="${usuario.correo}">
                     <c:if test="${not empty errorCorreo}">
                         <small style="color: #b00020;">${errorCorreo}</small>
                     </c:if>
@@ -68,10 +55,8 @@
                     <label>Teléfono</label>
                     <input type="text" name="telefono" placeholder="Ej: 987654321"
                            value="${usuario.telefonoFormateado}"
-                           required
                            maxlength="11"
                            inputmode="numeric"
-                           pattern="[0-9]{3} [0-9]{3} [0-9]{3}"
                            oninput="formatearTelefono(this)">
                     <c:if test="${not empty errorTelefono}">
                         <small style="color: #b00020;">${errorTelefono}</small>
@@ -81,12 +66,7 @@
                 <div class="form-grupo">
                     <label>Contraseña</label>
                     <input type="password" name="contrasena" placeholder="Ingresa tu contraseña"
-                           value="${usuario.contrasena}"
-                           required
-                           minlength="8">
-                    <c:if test="${not empty errorContrasena}">
-                        <small style="color: #b00020;">${errorContrasena}</small>
-                    </c:if>
+                           value="${usuario.contrasena}">
                 </div>
 
                 <div style="margin-top: 20px;">

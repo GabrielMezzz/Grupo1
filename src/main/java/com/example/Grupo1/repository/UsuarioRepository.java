@@ -11,7 +11,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
     List<Usuario> findByEstado(String estado);
 
-    boolean existsByDni(String dni);
-    boolean existsByCorreo(String correo);
-    boolean existsByTelefono(String telefono);
+    Usuario findByDni(String dni);
+    Usuario findByCorreo(String correo);
+    Usuario findByTelefono(String telefono);
 }

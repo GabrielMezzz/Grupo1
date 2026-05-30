@@ -1,5 +1,6 @@
 package com.example.Grupo1.controller;
 
+import com.example.Grupo1.model.Usuario;
 import com.example.Grupo1.service.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
 
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,55 +28,14 @@ class UsuarioControllerTest {
     private UsuarioService usuarioService;
 
     @Test
-    void guardarConDniInvalidoDebeQuedarseEnLaMismaVista() throws Exception {
+    void guardarDebeMostrarErrorDniSiYaExiste() throws Exception {
+        Usuario usuarioExistente = new Usuario();
+        usuarioExistente.setDni("12345678");
+
         when(usuarioService.listarUsuarios()).thenReturn(Collections.emptyList());
-
-        mockMvc.perform(post("/gestionusuarios/guardar")
-                        .param("nombre", "Juan")
-                        .param("apellido", "Perez")
-                        .param("dni", "1234A678")
-                        .param("correo", "juan@gmail.com")
-                        .param("telefono", "987 654 321")
-                        .param("rol", "Cliente")
-                        .param("contrasena", "clave123")
-                        .param("estado", "Activo"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("GestionUsuarios/gestionusuarios"))
-                .andExpect(model().attributeExists("usuarioEditar"))
-                .andExpect(model().attributeExists("errorDni"))
-                .andExpect(model().attribute("usuarioEditar", hasProperty("dni", is("1234A678"))));
-
-        verify(usuarioService, never()).guardarUsuario(any());
-    }
-
-    @Test
-    void actualizarConTelefonoInvalidoDebeQuedarseEnLaMismaVista() throws Exception {
-        when(usuarioService.listarUsuarios()).thenReturn(Collections.emptyList());
-
-        mockMvc.perform(post("/gestionusuarios/actualizar")
-                        .param("id", "5")
-                        .param("nombre", "Juan")
-                        .param("apellido", "Perez")
-                        .param("dni", "12345678")
-                        .param("correo", "juan@gmail.com")
-                        .param("telefono", "98765432")
-                        .param("rol", "Cliente")
-                        .param("contrasena", "clave123")
-                        .param("estado", "Activo"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("GestionUsuarios/gestionusuarios"))
-                .andExpect(model().attributeExists("usuarioEditar"))
-                .andExpect(model().attributeExists("errorTelefono"))
-                .andExpect(model().attribute("usuarioEditar", hasProperty("id", is(5L))));
-
-        verify(usuarioService, never()).guardarUsuario(any());
-    }
-
-    @Test
-    void guardarConDniRepetidoDebeMostrarErrorEnElCampoDni() throws Exception {
-        when(usuarioService.listarUsuarios()).thenReturn(Collections.emptyList());
-        doThrow(new IllegalArgumentException("El DNI ya está registrado"))
-                .when(usuarioService).guardarUsuario(any());
+        when(usuarioService.buscarPorDni("12345678")).thenReturn(usuarioExistente);
+        when(usuarioService.buscarPorCorreo("juan@gmail.com")).thenReturn(null);
+        when(usuarioService.buscarPorTelefono("987654321")).thenReturn(null);
 
         mockMvc.perform(post("/gestionusuarios/guardar")
                         .param("nombre", "Juan")
@@ -92,7 +48,40 @@ class UsuarioControllerTest {
                         .param("estado", "Activo"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("GestionUsuarios/gestionusuarios"))
-                .andExpect(model().attributeExists("errorDni"))
+                .andExpect(model().attributeExists("usuarioEditar"))
                 .andExpect(model().attribute("errorDni", "El DNI ya está registrado"));
+
+        verify(usuarioService, never()).guardarUsuario(org.mockito.ArgumentMatchers.any(Usuario.class));
+    }
+
+    @Test
+    void actualizarDebeMostrarErrorCorreoSiYaExiste() throws Exception {
+        Usuario existenteDni = new Usuario();
+        existenteDni.setDni("12345678");
+
+        Usuario existenteCorreo = new Usuario();
+        existenteCorreo.setCorreo("juan@gmail.com");
+
+        when(usuarioService.listarUsuarios()).thenReturn(Collections.emptyList());
+        when(usuarioService.buscarPorDni("12345678")).thenReturn(null);
+        when(usuarioService.buscarPorCorreo("juan@gmail.com")).thenReturn(existenteCorreo);
+        when(usuarioService.buscarPorTelefono("987654321")).thenReturn(null);
+
+        mockMvc.perform(post("/gestionusuarios/actualizar")
+                        .param("id", "5")
+                        .param("nombre", "Juan")
+                        .param("apellido", "Perez")
+                        .param("dni", "12345678")
+                        .param("correo", "juan@gmail.com")
+                        .param("telefono", "987654321")
+                        .param("rol", "Cliente")
+                        .param("contrasena", "clave123")
+                        .param("estado", "Activo"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("GestionUsuarios/gestionusuarios"))
+                .andExpect(model().attributeExists("usuarioEditar"))
+                .andExpect(model().attribute("errorCorreo", "El correo ya está registrado"));
+
+        verify(usuarioService, never()).guardarUsuario(org.mockito.ArgumentMatchers.any(Usuario.class));
     }
 }

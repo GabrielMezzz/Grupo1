@@ -9,4 +9,7 @@ public interface UsuarioService {
     void guardarUsuario(Usuario usuario);
     void eliminarUsuario(Long id);
     Usuario buscarPorId(Long id);
+    Usuario buscarPorDni(String dni);
+    Usuario buscarPorCorreo(String correo);
+    Usuario buscarPorTelefono(String telefono);
 }

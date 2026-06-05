@@ -16,4 +16,5 @@ public interface UsuarioService {
     boolean existePorDni(String dni);
     boolean existePorCorreo(String correo);
     boolean existePorTelefono(String telefono);
+    void actualizarUsuario(Usuario usuario);
 }

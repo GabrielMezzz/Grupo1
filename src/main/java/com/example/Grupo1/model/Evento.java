@@ -18,6 +18,7 @@ public class Evento {
     private Integer capacidad;
     private String artista;
     private String estado;
+    private String hora;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -45,4 +46,7 @@ public class Evento {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+
+    public String getHora() { return hora; }
+    public void setHora(String hora) { this.hora = hora; }
 }

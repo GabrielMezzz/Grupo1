@@ -39,6 +39,8 @@
                 <th>Precio unitario</th>
                 <th>Total</th>
                 <th>Fecha de Compra</th>
+                <th>Fecha de Evento</th>
+                <th>Hora del Evento</th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +52,8 @@
                   <td>S/. ${e.precio}</td>
                   <td>S/. ${e.total}</td>
                   <td>${e.fechaCompra}</td>
+                  <td>${e.hora}</td>
+                  <td>${e.fecha}</td>
                 </tr>
               </c:forEach>
             </tbody>

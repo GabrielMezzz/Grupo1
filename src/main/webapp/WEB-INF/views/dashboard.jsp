@@ -51,7 +51,7 @@
           </div>
         </a>
 
-        <a href="${pageContext.request.contextPath}/metricas" class="dash-link">
+        <a href="${pageContext.request.contextPath}/entradas/metricas" class="dash-link">
           <div class="dash-card">
             <i class="fa-solid fa-chart-bar dash-icon"></i>
             <p class="dash-text">Métricas</p>

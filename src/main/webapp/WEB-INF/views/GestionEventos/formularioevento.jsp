@@ -43,6 +43,7 @@
                       data-sede="${a.nombreSede}"
                       data-capacidad="${a.capacidadSede}"
                       data-fecha="${a.fechaEvento}"
+                      data-hora="${a.horaEvento}"
                 ${eventoEditar != null && eventoEditar.artista == a.nombreArtistico ? 'selected' : ''}>
                 ${a.nombreArtistico}
               </option>
@@ -52,26 +53,36 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Fecha</label>
-          <input type="date" name="fecha" id="fecha" required
-                 value="${eventoEditar != null ? eventoEditar.fecha : ''}">
+          <input type="text" name="fecha" id="fecha"
+                 value="${eventoEditar != null ? eventoEditar.fecha : ''}"
+                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Hora</label>
+          <input type="text" name="hora" id="hora"
+                 value="${eventoEditar != null ? eventoEditar.hora : ''}"
+                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Sede</label>
-          <input type="text" name="sede" id="sede" placeholder="Se autocompleta al seleccionar artista" readonly
-                 value="${eventoEditar != null ? eventoEditar.sede : ''}">
+          <input type="text" name="sede" id="sede"
+                 value="${eventoEditar != null ? eventoEditar.sede : ''}"
+                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Precio (S/.)</label>
-          <input type="number" name="precio" placeholder="Ej: 150" required
+          <input type="number" name="precio" placeholder="Ej: 150" required min="100"
                  value="${eventoEditar != null ? eventoEditar.precio : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Capacidad</label>
-          <input type="number" name="capacidad" id="capacidad" placeholder="Se autocompleta al seleccionar artista" readonly
-                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}">
+          <input type="text" name="capacidad" id="capacidad"
+                 value="${eventoEditar != null ? eventoEditar.capacidad : ''}"
+                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -108,5 +119,6 @@ function autocompletar() {
     document.getElementById('sede').value = opcion.getAttribute('data-sede') || '';
     document.getElementById('capacidad').value = opcion.getAttribute('data-capacidad') || '';
     document.getElementById('fecha').value = opcion.getAttribute('data-fecha') || '';
+    document.getElementById('hora').value = opcion.getAttribute('data-hora') || '';
 }
 </script>

@@ -22,6 +22,7 @@ public class Artista {
     private String ciudadSede;
     private Integer capacidadSede;
     private String fechaEvento;
+    private String horaEvento;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -58,4 +59,8 @@ public class Artista {
 
     public String getFechaEvento() { return fechaEvento; }
     public void setFechaEvento(String fechaEvento) { this.fechaEvento = fechaEvento; }
+
+    public String getHoraEvento() { return horaEvento; }
+
+    public void setHoraEvento(String horaEvento) { this.horaEvento = horaEvento; }
 }

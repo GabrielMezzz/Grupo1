@@ -42,23 +42,6 @@ public class HomeController {
         return "GestionEntradas/gestion";
     }
 
-    @GetMapping("/metricas")
-    public String metricas(Model model, HttpSession session) {
-        String rol = (String) session.getAttribute("rol");
-        if (rol == null || !rol.equals("Administrador")) {
-            return "redirect:/login";
-        }
-
-        long clientes = usuarioService.listarUsuarios().stream()
-                .filter(u -> u.getRol() != null && u.getRol().equals("Cliente"))
-                .count();
-        model.addAttribute("clientesActivos", clientes);
-        model.addAttribute("totalEntradasVendidas", entradaService.listarEntradas().size());
-        model.addAttribute("totalEventos", eventoService.listarEventosActivos().size());
-        model.addAttribute("totalIngresos", entradaService.calcularIngresos());
-        return "metricas";
-    }
-
     @GetMapping("/eventos")
     public String eventos(Model model, @RequestParam(required = false) String compra) {
         model.addAttribute("eventos", eventoService.listarEventosActivos());

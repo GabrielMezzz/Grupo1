@@ -9,4 +9,5 @@ public interface EventoService {
     void guardarEvento(Evento evento);
     void eliminarEvento(Long id);
     Evento buscarPorId(Long id);
+    Evento buscarPorNombre(String nombre);
 }

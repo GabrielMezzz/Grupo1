@@ -85,7 +85,7 @@ public class UsuarioController {
 
         usuario.setCorreo(usuario.getCorreo().trim().toLowerCase());
         usuario.setTelefono(usuario.getTelefono().trim());
-        usuarioService.guardarUsuario(usuario);
+        usuarioService.actualizarUsuario(usuario);
         return "redirect:/gestionusuarios";
     }
 

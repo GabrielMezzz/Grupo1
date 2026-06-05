@@ -14,6 +14,9 @@ public class EventoServiceImpl implements EventoService {
     private EventoRepository eventoRepository;
 
     @Override
+    public Evento buscarPorNombre(String nombre) { return eventoRepository.findByNombre(nombre).orElse(null); }
+
+    @Override
     public List<Evento> listarEventos() {
         return eventoRepository.findAll();
     }

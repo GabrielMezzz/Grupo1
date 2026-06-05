@@ -89,6 +89,12 @@
                  value="${artistaEditar != null ? artistaEditar.fechaEvento : ''}">
         </div>
 
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Hora del Evento</label>
+          <input type="time" name="horaEvento"
+                 value="${artistaEditar != null ? artistaEditar.horaEvento : ''}">
+        </div>
+
       </div>
 
       <div style="display: flex; gap: 10px; margin-top: 10px;">

@@ -35,20 +35,27 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Artista / Compañía</label>
-          <select name="artista" id="selectArtista" onchange="autocompletar()">
+          <label>Sede - Artista</label>
+          <select name="sede" id="selectSede" onchange="autocompletar()">
             <option value="">Seleccionar...</option>
-            <c:forEach var="a" items="${artistas}">
-              <option value="${a.nombreArtistico}"
-                      data-sede="${a.nombreSede}"
-                      data-capacidad="${a.capacidadSede}"
-                      data-fecha="${a.fechaEvento}"
-                      data-hora="${a.horaEvento}"
-                ${eventoEditar != null && eventoEditar.artista == a.nombreArtistico ? 'selected' : ''}>
-                ${a.nombreArtistico}
+            <c:forEach var="s" items="${sedes}">
+              <option value="${s.nombreSede}"
+                      data-capacidad="${s.capacidadSede}"
+                      data-fecha="${s.fechaEvento}"
+                      data-hora="${s.horaEvento}"
+                      data-artista="${s.nombreArtista}"
+                ${eventoEditar != null && eventoEditar.sede == s.nombreSede ? 'selected' : ''}>
+                ${s.nombreSede} — ${s.nombreArtista}
               </option>
             </c:forEach>
           </select>
+        </div>
+
+        <div class="form-grupo" style="flex: 1; min-width: 200px;">
+          <label>Artista</label>
+          <input type="text" name="artista" id="artista"
+                 value="${eventoEditar != null ? eventoEditar.artista : ''}"
+                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
@@ -62,13 +69,6 @@
           <label>Hora</label>
           <input type="text" name="hora" id="hora"
                  value="${eventoEditar != null ? eventoEditar.hora : ''}"
-                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Sede</label>
-          <input type="text" name="sede" id="sede"
-                 value="${eventoEditar != null ? eventoEditar.sede : ''}"
                  readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
         </div>
 
@@ -114,9 +114,9 @@
 
 <script>
 function autocompletar() {
-    const select = document.getElementById('selectArtista');
+    const select = document.getElementById('selectSede');
     const opcion = select.options[select.selectedIndex];
-    document.getElementById('sede').value = opcion.getAttribute('data-sede') || '';
+    document.getElementById('artista').value = opcion.getAttribute('data-artista') || '';
     document.getElementById('capacidad').value = opcion.getAttribute('data-capacidad') || '';
     document.getElementById('fecha').value = opcion.getAttribute('data-fecha') || '';
     document.getElementById('hora').value = opcion.getAttribute('data-hora') || '';

@@ -39,8 +39,8 @@
                 <th>Precio unitario</th>
                 <th>Total</th>
                 <th>Fecha de Compra</th>
-                <th>Fecha de Evento</th>
                 <th>Hora del Evento</th>
+                <th>Fecha de Evento</th>
               </tr>
             </thead>
             <tbody>

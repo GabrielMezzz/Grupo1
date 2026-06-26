@@ -30,6 +30,13 @@
           </div>
         </a>
 
+        <a href="${pageContext.request.contextPath}/gestionsedes" class="dash-link">
+          <div class="dash-card">
+            <i class="fa-solid fa-location-dot dash-icon"></i>
+            <p class="dash-text">Sedes</p>
+          </div>
+        </a>
+
         <a href="${pageContext.request.contextPath}/gestionusuarios" class="dash-link">
           <div class="dash-card">
             <i class="fa-solid fa-users dash-icon"></i>
@@ -41,13 +48,6 @@
           <div class="dash-card">
             <i class="fa-solid fa-ticket dash-icon"></i>
             <p class="dash-text">Entradas</p>
-          </div>
-        </a>
-
-        <a href="${pageContext.request.contextPath}/gestionartistas" class="dash-link">
-          <div class="dash-card">
-            <i class="fa-solid fa-microphone dash-icon"></i>
-            <p class="dash-text">Artistas</p>
           </div>
         </a>
 

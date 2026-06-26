@@ -1,9 +1,9 @@
 package com.example.Grupo1.controller;
 
 import com.example.Grupo1.model.Evento;
-import com.example.Grupo1.service.ArtistaService;
 import com.example.Grupo1.service.CategoriaService;
 import com.example.Grupo1.service.EventoService;
+import com.example.Grupo1.service.SedeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class EventoController {
     private CategoriaService categoriaService;
 
     @Autowired
-    private ArtistaService artistaService;
+    private SedeService sedeService;
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
@@ -32,7 +32,7 @@ public class EventoController {
         model.addAttribute("eventos", eventoService.listarEventos());
         model.addAttribute("evento", new Evento());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
-        model.addAttribute("artistas", artistaService.listarArtistasActivos());
+        model.addAttribute("sedes", sedeService.listarSedesActivas());
         return "GestionEventos/gestioneventos";
     }
 
@@ -57,7 +57,7 @@ public class EventoController {
         model.addAttribute("eventoEditar", eventoService.buscarPorId(id));
         model.addAttribute("eventos", eventoService.listarEventos());
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
-        model.addAttribute("artistas", artistaService.listarArtistasActivos());
+        model.addAttribute("sedes", sedeService.listarSedesActivas());
         return "GestionEventos/gestioneventos";
     }
 

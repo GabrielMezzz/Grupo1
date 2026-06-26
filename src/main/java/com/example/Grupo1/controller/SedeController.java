@@ -1,7 +1,7 @@
 package com.example.Grupo1.controller;
 
-import com.example.Grupo1.model.Artista;
-import com.example.Grupo1.service.ArtistaService;
+import com.example.Grupo1.model.Sede;
+import com.example.Grupo1.service.SedeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/gestionartistas")
-public class ArtistaController {
+@RequestMapping("/gestionsedes")
+public class SedeController {
 
     @Autowired
-    private ArtistaService artistaService;
+    private SedeService sedeService;
 
     @GetMapping
     public String listar(Model model, HttpSession session) {
@@ -21,26 +21,26 @@ public class ArtistaController {
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
-        model.addAttribute("artistas", artistaService.listarArtistas());
-        return "GestionArtistas/gestionArtistas";
+        model.addAttribute("sedes", sedeService.listarSedes());
+        return "GestionSedes/gestionSedes";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Artista artista, Model model) {
+    public String guardar(@ModelAttribute Sede sede, Model model) {
         try {
-            artistaService.guardarArtista(artista);
+            sedeService.guardarSede(sede);
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
-            model.addAttribute("artistas", artistaService.listarArtistas());
-            return "GestionArtistas/gestionArtistas";
+            model.addAttribute("sedes", sedeService.listarSedes());
+            return "GestionSedes/gestionSedes";
         }
-        return "redirect:/gestionartistas";
+        return "redirect:/gestionsedes";
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
-        artistaService.eliminarArtista(id);
-        return "redirect:/gestionartistas";
+        sedeService.eliminarSede(id);
+        return "redirect:/gestionsedes";
     }
 
     @GetMapping("/editar/{id}")
@@ -49,21 +49,21 @@ public class ArtistaController {
         if (rol == null || !rol.equals("Administrador")) {
             return "redirect:/login";
         }
-        model.addAttribute("artistaEditar", artistaService.obtenerPorId(id));
-        model.addAttribute("artistas", artistaService.listarArtistas());
-        return "GestionArtistas/gestionArtistas";
+        model.addAttribute("sede", sedeService.obtenerPorId(id));
+        model.addAttribute("sedes", sedeService.listarSedes());
+        return "GestionSedes/gestionSedes";
     }
 
     @PostMapping("/actualizar")
-    public String actualizar(@ModelAttribute Artista artista, Model model) {
+    public String actualizar(@ModelAttribute Sede sede, Model model) {
         try {
-            artistaService.guardarArtista(artista);
+            sedeService.guardarSede(sede);
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
-            model.addAttribute("artistaEditar", artista);
-            model.addAttribute("artistas", artistaService.listarArtistas());
-            return "GestionArtistas/gestionArtistas";
+            model.addAttribute("sede", sede);
+            model.addAttribute("sedes", sedeService.listarSedes());
+            return "GestionSedes/gestionSedes";
         }
-        return "redirect:/gestionartistas";
+        return "redirect:/gestionsedes";
     }
 }

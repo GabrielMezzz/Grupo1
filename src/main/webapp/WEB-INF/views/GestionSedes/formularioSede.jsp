@@ -43,18 +43,6 @@
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Fecha del Evento</label>
-          <input type="date" name="fechaEvento" required
-                 value="${sede != null ? sede.fechaEvento : ''}">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
-          <label>Hora del Evento</label>
-          <input type="time" name="horaEvento" required
-                 value="${sede != null ? sede.horaEvento : ''}">
-        </div>
-
-        <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Nombre del Artista</label>
           <input type="text" name="nombreArtista" placeholder="Ej: Banda Rockera" required
                  value="${sede != null ? sede.nombreArtista : ''}">
@@ -63,7 +51,7 @@
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Género / Tipo</label>
           <select name="genero">
-            <c:forEach var="g" items="${['Rock','Pop','Teatro','Comedia','Clásica','Urbano']}">
+            <c:forEach var="g" items="${['Rock','Pop','Teatro','Comedia','Clásica','Urbano','Espectaculo']}">
               <option ${sede != null && sede.genero == g ? 'selected' : ''}>${g}</option>
             </c:forEach>
           </select>

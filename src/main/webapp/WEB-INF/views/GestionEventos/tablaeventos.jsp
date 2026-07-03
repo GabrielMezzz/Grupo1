@@ -10,7 +10,8 @@
         <th>Fecha</th>
         <th>Sede</th>
         <th>Precio</th>
-        <th>Capacidad</th>
+        <th>Capacidad Inicial</th>
+        <th>Disponibles</th>
         <th>Estado</th>
         <th>Acciones</th>
       </tr>
@@ -24,8 +25,19 @@
           <td>${e.fecha}</td>
           <td>${e.sede}</td>
           <td>S/. ${e.precio}</td>
-          <td>${e.capacidad}</td>
-          <td><span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px;">${e.estado}</span></td>
+          <td>${e.capacidadInicial}</td>
+          <td>
+            <span style="background-color: ${e.capacidad == 0 ? '#f8d7da' : '#d4edda'};
+                         color: ${e.capacidad == 0 ? '#721c24' : '#155724'};
+                         padding: 3px 10px; border-radius: 20px; font-size: 12px;">
+              ${e.capacidad == 0 ? 'Agotado' : e.capacidad}
+            </span>
+          </td>
+          <td>
+            <span style="background-color: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px;">
+              ${e.estado}
+            </span>
+          </td>
           <td style="display: flex; gap: 6px;">
             <a href="${pageContext.request.contextPath}/gestioneventos/editar/${e.id}">
               <button class="btn-primario" style="padding: 5px 12px; font-size: 12px;">Editar</button>

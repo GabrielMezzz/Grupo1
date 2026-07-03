@@ -41,8 +41,6 @@
             <c:forEach var="s" items="${sedes}">
               <option value="${s.nombreSede}"
                       data-capacidad="${s.capacidadSede}"
-                      data-fecha="${s.fechaEvento}"
-                      data-hora="${s.horaEvento}"
                       data-artista="${s.nombreArtista}"
                 ${eventoEditar != null && eventoEditar.sede == s.nombreSede ? 'selected' : ''}>
                 ${s.nombreSede} — ${s.nombreArtista}
@@ -60,21 +58,19 @@
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Fecha</label>
-          <input type="text" name="fecha" id="fecha"
-                 value="${eventoEditar != null ? eventoEditar.fecha : ''}"
-                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
+          <input type="date" name="fecha" id="fecha" required
+                 value="${eventoEditar != null ? eventoEditar.fecha : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Hora</label>
-          <input type="text" name="hora" id="hora"
-                 value="${eventoEditar != null ? eventoEditar.hora : ''}"
-                 readonly style="background-color: #e9ecef; cursor: not-allowed; color: #495057;">
+          <input type="time" name="hora" id="hora" required
+                 value="${eventoEditar != null ? eventoEditar.hora : ''}">
         </div>
 
         <div class="form-grupo" style="flex: 1; min-width: 200px;">
           <label>Precio (S/.)</label>
-          <input type="number" name="precio" placeholder="Ej: 150" required min="100"
+          <input type="number" name="precio" placeholder="Ej: 150" required min="1"
                  value="${eventoEditar != null ? eventoEditar.precio : ''}">
         </div>
 
@@ -118,7 +114,5 @@ function autocompletar() {
     const opcion = select.options[select.selectedIndex];
     document.getElementById('artista').value = opcion.getAttribute('data-artista') || '';
     document.getElementById('capacidad').value = opcion.getAttribute('data-capacidad') || '';
-    document.getElementById('fecha').value = opcion.getAttribute('data-fecha') || '';
-    document.getElementById('hora').value = opcion.getAttribute('data-hora') || '';
 }
 </script>

@@ -14,9 +14,6 @@ public class Sede {
     private String direccionSede;
     private String ciudadSede;
     private Integer capacidadSede;
-    private String fechaEvento;
-    private String horaEvento;
-
     private String nombreArtista;
     private String genero;
     private String correo;
@@ -37,12 +34,6 @@ public class Sede {
 
     public Integer getCapacidadSede() { return capacidadSede; }
     public void setCapacidadSede(Integer capacidadSede) { this.capacidadSede = capacidadSede; }
-
-    public String getFechaEvento() { return fechaEvento; }
-    public void setFechaEvento(String fechaEvento) { this.fechaEvento = fechaEvento; }
-
-    public String getHoraEvento() { return horaEvento; }
-    public void setHoraEvento(String horaEvento) { this.horaEvento = horaEvento; }
 
     public String getNombreArtista() { return nombreArtista; }
     public void setNombreArtista(String nombreArtista) { this.nombreArtista = nombreArtista; }

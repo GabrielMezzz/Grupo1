@@ -40,4 +40,9 @@ public class EventoServiceImpl implements EventoService {
     public Evento buscarPorId(Long id) {
         return eventoRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Evento> listarEventosActivosPorCategoria(String categoria) {
+        return eventoRepository.findByEstadoAndCategoria("Activo", categoria);
+    }
 }

@@ -13,8 +13,20 @@
 
             <div class="evento-detalles">
               <p><i class="fa-solid fa-calendar-days"></i> FECHA: ${evento.fecha}</p>
+              <p><i class="fa-solid fa-clock"></i> HORA: ${evento.hora}</p>
               <p><i class="fa-solid fa-location-dot"></i> LUGAR: ${evento.sede}</p>
               <p><i class="fa-solid fa-microphone"></i> ARTISTA: ${evento.artista}</p>
+              <p>
+                <i class="fa-solid fa-ticket"></i> DISPONIBLES:
+                <c:choose>
+                  <c:when test="${evento.capacidad == 0}">
+                    <span style="color: #dc3545; font-weight: bold;">Agotado</span>
+                  </c:when>
+                  <c:otherwise>
+                    <span style="color: #28a745; font-weight: bold;">${evento.capacidad}</span>
+                  </c:otherwise>
+                </c:choose>
+              </p>
             </div>
 
             <div class="cantidad-wrapper">
@@ -26,12 +38,20 @@
 
             <div class="evento-footer">
               <span class="evento-precio">S/. ${evento.precio}</span>
-              <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}?cantidad=1"
-                 id="link_${evento.id}"
-                 class="btn-comprar-link"
-                 onclick="actualizarLink('${evento.id}', '${pageContext.request.contextPath}')">
-                <button class="btn-primario">Comprar</button>
-              </a>
+              <c:choose>
+                <c:when test="${evento.capacidad == 0}">
+                  <button class="btn-primario" disabled
+                          style="opacity: 0.5; cursor: not-allowed;">Agotado</button>
+                </c:when>
+                <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/entradas/comprar/${evento.id}?cantidad=1"
+                     id="link_${evento.id}"
+                     class="btn-comprar-link"
+                     onclick="actualizarLink('${evento.id}', '${pageContext.request.contextPath}')">
+                    <button class="btn-primario">Comprar</button>
+                  </a>
+                </c:otherwise>
+              </c:choose>
             </div>
           </div>
         </article>

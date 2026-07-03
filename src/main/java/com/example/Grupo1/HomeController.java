@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+import com.example.Grupo1.model.Evento;
 
 @Controller
 public class HomeController {
@@ -43,9 +45,20 @@ public class HomeController {
     }
 
     @GetMapping("/eventos")
-    public String eventos(Model model, @RequestParam(required = false) String compra) {
-        model.addAttribute("eventos", eventoService.listarEventosActivos());
+    public String eventos(Model model,
+                          @RequestParam(required = false) String compra,
+                          @RequestParam(required = false) String categoria) {
+
+        List<Evento> eventos;
+        if (categoria != null && !categoria.isEmpty()) {
+            eventos = eventoService.listarEventosActivosPorCategoria(categoria);
+        } else {
+            eventos = eventoService.listarEventosActivos();
+        }
+
+        model.addAttribute("eventos", eventos);
         model.addAttribute("categorias", categoriaService.listarCategoriasActivas());
+
         if ("exitosa".equals(compra)) {
             model.addAttribute("compraExitosa", true);
         }

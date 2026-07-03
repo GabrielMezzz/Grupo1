@@ -10,4 +10,5 @@ public interface EventoService {
     void eliminarEvento(Long id);
     Evento buscarPorId(Long id);
     Evento buscarPorNombre(String nombre);
+    List<Evento> listarEventosActivosPorCategoria(String categoria);
 }

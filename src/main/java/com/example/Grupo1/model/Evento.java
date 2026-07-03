@@ -16,6 +16,7 @@ public class Evento {
     private String sede;
     private Double precio;
     private Integer capacidad;
+    private Integer capacidadInicial; // ── NUEVO
     private String artista;
     private String estado;
     private String hora;
@@ -40,6 +41,9 @@ public class Evento {
 
     public Integer getCapacidad() { return capacidad; }
     public void setCapacidad(Integer capacidad) { this.capacidad = capacidad; }
+
+    public Integer getCapacidadInicial() { return capacidadInicial; }
+    public void setCapacidadInicial(Integer capacidadInicial) { this.capacidadInicial = capacidadInicial; }
 
     public String getArtista() { return artista; }
     public void setArtista(String artista) { this.artista = artista; }

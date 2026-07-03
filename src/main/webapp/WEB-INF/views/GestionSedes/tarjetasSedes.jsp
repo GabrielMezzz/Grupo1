@@ -8,8 +8,6 @@
       <p style="font-size: 13px; color: #777;">Dirección: ${s.direccionSede}</p>
       <p style="font-size: 13px; color: #777;">Ciudad: ${s.ciudadSede}</p>
       <p style="font-size: 13px; color: #777;">Capacidad: ${s.capacidadSede}</p>
-      <p style="font-size: 13px; color: #777;">Fecha: ${s.fechaEvento}</p>
-      <p style="font-size: 13px; color: #777;">Hora: ${s.horaEvento}</p>
       <p style="font-size: 13px; color: #777;">Artista: ${s.nombreArtista}</p>
       <p style="font-size: 13px; color: #777;">Género: ${s.genero}</p>
       <p style="font-size: 13px; color: #777;">Correo: ${s.correo}</p>

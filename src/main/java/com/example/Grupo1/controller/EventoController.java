@@ -38,6 +38,7 @@ public class EventoController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Evento evento) {
+        evento.setCapacidadInicial(evento.getCapacidad());
         eventoService.guardarEvento(evento);
         return "redirect:/gestioneventos";
     }

@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface EventoRepository extends JpaRepository<Evento, Long> {
     List<Evento> findByEstado(String estado);
     Optional<Evento> findByNombre(String nombre);
+    List<Evento> findByEstadoAndCategoria(String estado, String categoria);
 }
